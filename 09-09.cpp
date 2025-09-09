@@ -27,8 +27,26 @@ void triangles(double a, double b,double c){
     cout<<"TAK";
 }
 
+void czySiePowtarza(string s){
+    int array[128];
+    for(int i=0;i<128;i++){
+        array[i]=0;
+    }
+    for(int i=0;i<s.size();i++){
+        if(array[s[i]]==1){
+            cout<<"TAK";
+            return;
+        }
+        array[s[i]]=1;
+
+    }
+    cout<<"NIE";
+}
+
 int main(){
-    
-    
+    string s; cin>>s;
+
+    czySiePowtarza(s);
+
 
 }
