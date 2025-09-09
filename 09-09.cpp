@@ -33,11 +33,11 @@ void czySiePowtarza(string s){
         array[i]=0;
     }
     for(int i=0;i<s.size();i++){
-        if(array[s[i]]==1){
+        if(array[toupper(s[i])]==1){
             cout<<"TAK";
             return;
         }
-        array[s[i]]=1;
+        array[toupper(s[i])]=1;
 
     }
     cout<<"NIE";
