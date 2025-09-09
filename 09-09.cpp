@@ -2,7 +2,7 @@
 #include <vector>
 using namespace std;
 
-void changeNum(int n, int p){
+string changeNum(int n, int p){
     string r;
     while (n>0){
         if(n%p<=9){
@@ -15,8 +15,7 @@ void changeNum(int n, int p){
         }
         n = n/p;
     }
-    cout<<r;
-    cout<<endl;
+    return r;
 }
 
 void triangles(double a, double b,double c){
@@ -43,10 +42,24 @@ void czySiePowtarza(string s){
     cout<<"NIE";
 }
 
-int main(){
-    string s; cin>>s;
+void ileCyfrDoslownie(int n){
+    string binary = changeNum(n, 2);
+    string czworkowy = changeNum(n, 4);
+    string osemkowy = changeNum(n, 8);
 
-    czySiePowtarza(s);
+    cout<<binary.size()<<" "<<czworkowy.size()<<" "<<osemkowy.size()<<endl;
+}
+
+void ileCyfrBezLiczenia(int n){
+    if(n%2==1) cout<<n/2+1<<endl;
+    else cout<<n/2<<endl;
+    if(n%3>0) cout<<n/3+1<<endl;
+    else cout<<n/2<<endl;
+    if(n%4>0) cout<<n/4+1<<endl;
+    else cout<<n/2<<endl;
+}
+//nwm co to dokonca lepiej to na gorze uzywac
+int main(){
 
 
 }
