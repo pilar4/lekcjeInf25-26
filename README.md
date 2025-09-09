@@ -2,4 +2,4 @@ archiwizacja
 wszystkich
 kodow
 z
-informatyki
+informatyki 2025/2026
