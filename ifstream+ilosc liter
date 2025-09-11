@@ -1,0 +1,32 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+
+using namespace std;
+
+int main() {
+
+    string c; char h; int licz[26];
+    for(int i=0; i<26; i++) licz[i] = 0;
+    
+    ifstream wejscie("dane_zliczanie.txt");
+
+    while (!wejscie.eof()) {
+        getline(wejscie, c);
+        for(int i=0; i<c.size(); i++) {
+            h = toupper(c[i]);
+            if (h>='A' && h<='Z') licz[h-'A']++;
+        }
+    }
+
+    wejscie.close();
+
+    for(int i=0; i<26; i++) {
+        if(licz[i]) {
+                cout<<char(i+'A')<<" - ";
+                cout<<licz[i]<<endl;
+        }
+    }
+
+    return 0;
+}
