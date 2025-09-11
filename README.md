@@ -1,5 +1,14 @@
-# archiwizacja
-## wszystkich
-### kodow
-# z
-informatyki 2025/2026
+archiwizacja
+wszystkich
+kodow
+z
+informatyki 
+2
+0
+2
+5
+/
+2
+0
+2
+6
