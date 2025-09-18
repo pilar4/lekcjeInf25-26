@@ -11,6 +11,16 @@ void zad1 (long long n){
         licz[(n%10)-1]++;
         n = (n-(n%10))/10;
     }
+    for(int i=0; i<10; i++) cout<<i+1<<" * "<<licz[i]<<endl;
+}
+
+void zad2 (){
+    int n=67, x=-2137;
+    while(n){
+        cin>>n;
+        if(n>x) x=n;
+    }
+    cout<<x;
 }
 
 void zad5 (){
@@ -26,9 +36,7 @@ int main() {
     for(int i=0; i<10; i++) licz[i]=0;
 
     //long long n; cin>>n; 
-    zad5 ();
-
-    for(int i=0; i<10; i++) cout<<i+1<<" * "<<licz[i]<<endl;
+    zad2 ();
 
     return 0;
 }
