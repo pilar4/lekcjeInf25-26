@@ -1,3 +1,7 @@
+//jak przeczytalem cw to od razu zrobilem tak
+//bez sortowania bo wydawalo sie to naturalne
+//a nie ma w poleceniu ze trzeba urzywac sortowania
+
 #include<iostream>
 using namespace std;
 int tab[128];
