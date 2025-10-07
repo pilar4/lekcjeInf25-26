@@ -31,7 +31,7 @@ int main(){
 
 
 // ------------------CW2
-√#include<iostream>
+#include<iostream>
 using namespace std;
 
 const int N=10;
