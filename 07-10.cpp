@@ -93,6 +93,34 @@ int main(){
 
 //------------------CW4
 
+#include<iostream>
+using namespace std;
 
+const int N=10;
+int A[N+2] = {0, 0, 3, 4, 6, 1, 7, 5, 9, 2, 5, 9};
+void Sortuj(int A[]){
+    int i, j, counter=0;
+    for(i=2;i<=N;i++){
+        A[0]=A[i];
+        j=i-1;
+        while(A[j]>A[0]){
+            counter++;
+            A[j+1]=A[j];
+            j--;
+        }
+        counter++;
+        A[j+1]=A[0];
+    }
+        cout<<"Porownania: "<<counter<<'\n';
+}
+
+int main(){
+    
+    Sortuj(A);
+    for(int i=2;i<=N+1;i++){
+        cout<<A[i];
+    }
+    cout<<'\n';
+}
 
 
