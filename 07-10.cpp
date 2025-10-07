@@ -65,7 +65,7 @@ int main(){
 using namespace std;
 
 const int N=10;
-int A[N+1] = {3, 4, 6, 1, 7, 5, 9, 2, 5, 9};
+int A[N+2] = {0, 0, 3, 4, 6, 1, 7, 5, 9, 2, 5, 9};
 void Sortuj(int A[]){
     int i, j;
     for(i=2;i<=N;i++){
@@ -83,7 +83,7 @@ void Sortuj(int A[]){
 int main(){
     
     Sortuj(A);
-    for(int i=1;i<=N;i++){
+    for(int i=2;i<=N+1;i++){
         cout<<A[i];
     }
     cout<<'\n';
