@@ -242,7 +242,7 @@ int main() {
 
 Zad. 4
 
-	#include <iostream>
+#include <iostream>
 #include <cmath>
 using namespace std;
 
