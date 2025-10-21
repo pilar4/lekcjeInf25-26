@@ -23,7 +23,6 @@ using namespace std;
 
 int main() {
     int n;
-    cout << "Podaj n: ";
     cin >> n;
 
     vector<bool> pier(n + 1, true); 
