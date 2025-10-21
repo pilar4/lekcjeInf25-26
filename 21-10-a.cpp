@@ -242,6 +242,51 @@ int main() {
 
 Zad. 4
 
+	#include <iostream>
+#include <cmath>
+using namespace std;
+
+const int N = 1000000;
+bool pierwsze[N];
+
+void SitoEratostenesa(bool pierwsze[]){
+   pierwsze[2] = true;
+   for(int i=3; i<N; i++){
+       pierwsze[i] = (i%2==1);
+   }
+   int d=3;
+
+
+   while(d*d<N){
+       for(int i=d; i*d<N; i+=2){
+           pierwsze[i*d] = false;
+       }
+       do
+           d+=2;
+       while(!pierwsze[d]);
+   }
+}
+
+int main() {
+    SitoEratostenesa(pierwsze);
+    int k;
+    cin >> k;
+
+    for(int i=2; i<=k; i++){
+        for(int j=i; j<=k; j++){
+            if(pierwsze[i] && pierwsze[j]){
+                cout<<i*j<<" ";
+            }
+        }
+        cout<<'\n';
+        
+    }
+
+    
+    return 0;
+}
+
+
 Zad. 5
 
 
