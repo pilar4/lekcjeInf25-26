@@ -159,4 +159,33 @@ int main() {
     return 0;
 }
 
+//zad 5 z internetem, bo podrecznik nie wytlumaczyl jak dziala set
 
+#include <iostream>
+#include <set>
+
+using namespace std;
+
+int main(){
+
+    int n = 100; 
+    set<int> pier;
+
+    for(int i = 2; i < n+1; i++){
+        pier.insert(i);
+    }
+
+    for (int i = 2; i * i <= n; i++) {
+        if(pier.find(i) != pier.end()) //bo jak nie znajdzie i to jest wtedy pier.end(), czyli szukay istniejacego i ktore na pewno jest pierwsze
+            for (int j = i * i; j <= n; j += i){
+                pier.erase(j);
+        }
+    }
+
+
+    set<int>::iterator it;
+    for(it = pier.begin(); it != pier.end(); it++){
+        cout<<*it<<" ";
+    }
+    return 0;
+}
