@@ -1,4 +1,4 @@
-:sob:
+
 Ćw. 1
 #include <iostream>
 #include <cstdlib>
