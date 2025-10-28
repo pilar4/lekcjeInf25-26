@@ -268,6 +268,68 @@ int main(){
 
 }
 Ćw. 6
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+const int N = 5;
+int tab[N];
+
+int DNSPNM(){
+    int maks_dl=1, akt_dl=1, i;
+    for(i=1;i<N;i++){
+        if(tab[i]>=tab[i-1]){
+            akt_dl++;
+            if(akt_dl>maks_dl) maks_dl=akt_dl;
+        } else {
+            akt_dl=1;
+        }
+    }
+
+    return maks_dl;
+}
+
+int NSPNM(){
+    int maks_dl=1, akt_dl=1, maks_pocz=0, akt_pocz=0, i;
+    for(i=1;i<N;i++){
+        if(tab[i]>=tab[i-1]){
+            akt_dl++;
+            if(akt_dl>maks_dl){
+                maks_dl=akt_dl; maks_pocz=akt_pocz;
+            }
+        } else {
+            akt_dl=1;
+            akt_pocz=i;
+        }
+    }
+
+    return maks_pocz;
+}
+
+int MSPS(){
+    int maks_suma=0, akt_suma=0, i;
+    for(i=0;i<N;i++){
+        if(akt_suma+tab[1]>0){
+            akt_suma+=tab[i];
+            if(akt_suma>maks_suma)
+                maks_suma=akt_suma;
+        }
+        else akt_suma=0;
+    }
+    return maks_suma;
+    
+}
+
+int main() {
+
+    for(int i=0;i<N;i++){
+        cin>>tab[i];
+    }
+    
+    cout<<"maks suma: "<<MSPS();
+    
+    return 0;
+}
 
 Ćw. 7
 
