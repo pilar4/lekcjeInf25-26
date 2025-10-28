@@ -332,10 +332,57 @@ int main() {
 }
 
 Ćw. 7
-
+  Jest różnica dla np takich n:
   n = 100 000
   n = 1 000 000
 
 Ćw. 8
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+const int N = 5;
+int tab[N];
+
+void PSMS (int  &makssuma, int &makspocz){
+    makssuma = 0; 
+    makspocz = 0;
+    int aktsuma=0, aktpocz=0;
+    for(int i=0;i<N;i++){
+        if(aktsuma+tab[i]>0){
+            aktsuma+=tab[i];
+            if(aktsuma>makssuma){
+                makssuma=aktsuma;
+                makspocz=aktpocz;
+            }
+        } else {
+            aktsuma=0;
+            aktpocz=i+1;
+        }
+    }
+    
+}
+
+
+int main() {
+    int suma, pocz, tmp=0, i;
+
+    for(int i=0;i<N;i++){
+        cin>>tab[i];
+    }
+    
+    PSMS(suma, pocz);
+    cout<<"maks suma spojnego ";
+    cout<<suma<<'\n';
+    cout<<"podciag spojny o maks sumie: "<<'\n';
+    i=pocz;
+    while(tmp!=suma){
+        cout<<tab[i]<<" ";
+        tmp+=tab[i];
+        i++;
+    }
+
+    return 0;
+}
 
 Ćw. 9
