@@ -103,5 +103,56 @@ int main() {
   
    return 0;
 }
+------------------------------- nwm jak jonasz to zrobil aale ja mam tak na dole
+   #include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+const int N=10;
+
+void losuj(int A[],int N){
+for(int i=0;i<N;i++){
+  A[i]=rand()%10;
+}
+}
+
+void wypisz(int A[],int N){
+for(int i=0;i<N;i++){
+  cout<<A[i]<<" ";
+}
+}
+
+int NSPNM(int A[]){
+   int max_dl=1, akt_dl=1, maks_pocz=0, akt_pocz=0;
+   for(int i=1;i<N;i++){
+       if(A[i]>A[i-1]){
+           akt_dl++;
+           if(akt_dl>=max_dl){
+               max_dl=akt_dl;
+               maks_pocz=akt_pocz;
+           }
+       }
+       else{
+           akt_dl=1;
+           akt_pocz=i;
+       }
+   }
+   return maks_pocz;
+}
+int main(){
+   int A[N],i;
+   srand(time(NULL));
+   losuj(A,N);
+   wypisz(A,N);
+   i=NSPNM(A);
+   cout<<'\n';
+   do{
+       cout<<A[i]<<" ";
+       i++;
+   }
+   while(i<N && A[i]>=A[i-1]);
+   return 0;
+}
+
 
 zad 3
