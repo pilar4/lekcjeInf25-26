@@ -72,7 +72,7 @@ int NSPNM(){
    for(int i = 1; i < N; i++){
        if(tab[i] >= tab[i-1]){
            akt_dl++;
-           if(akt_dl > maks_dl){
+           if(akt_dl >= maks_dl){
                maks_dl = akt_dl;
                maks_pocz = akt_pocz;
            }
