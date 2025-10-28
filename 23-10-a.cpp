@@ -1,4 +1,4 @@
-//karol to pisal
+
 Ćw. 1
 #include <iostream>
 #include <cstdlib>
@@ -222,7 +222,51 @@ int main(){
 }
 
 Ćw. 5
+#include <iostream>
+#include <string>
+#include <algorithm>
+#include <cmath>
 
+using namespace std;
+
+int const N=10;
+
+int MSPS(int A[]){
+   int makssuma=0,aktsuma;
+   for(int i=0;i<N;i++){
+       aktsuma=0;
+       for(int j=i;j<N;j++){
+           aktsuma+=A[j];
+           if(aktsuma>makssuma)
+           makssuma=aktsuma;
+       }
+   }
+   return makssuma;
+}
+
+void losuj(int A[]){
+   for(int i=0;i<N;i++)
+       A[i]=rand()%100-50;
+   A[rand()%N]=rand()%50;
+}
+
+void Wpisz(int A[]){
+   for(int i=0;i<N;i++){
+       cout<<A[i]<<" "<<endl;
+   }
+}
+
+int main(){
+   srand(time(NULL));
+   int a[N];
+
+   losuj(a);
+   Wpisz(a);
+   cout<<endl;
+
+   cout<<MSPS(a)<<endl;
+
+}
 Ćw. 6
 
 Ćw. 7
