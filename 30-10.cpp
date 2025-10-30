@@ -246,3 +246,81 @@ int main() {
     
     return 0;
 }
+
+cw 8 
+
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <stdlib.h>
+
+using namespace std;
+
+const int N=5;
+
+void losuj(int A[][N]){
+    int idol;
+    for(int i=0; i<N; i++){
+        for(int j=0; j<N; j++){
+            A[i][j] = rand()%2;
+        }
+    }
+    if(rand()%2){
+        idol = rand()%N;
+        for (int i=0; i<N; i++){
+            A[i][idol] = true;
+        }
+        for (int j=0; j<N; j++){
+            A[idol][j] = false;
+        }
+    }
+
+}
+
+void wypisz(int A[][N]){
+    for(int i=0; i<N; i++){
+        for(int j=0; j<N; j++){
+            if(i!=j) cout<<A[i][j]<<" ";
+            else cout<<"   ";
+        }
+        cout<<endl;
+    }
+}
+int szukajido(int A[][N]){
+    int kandydat=0,i=1;
+    while(i<N){
+        if(A[kandydat][i]){
+            kandydat=i;  
+        }
+        i++;
+    }
+    i=0;A[kandydat][kandydat]=false;
+    while(i<N && !A[kandydat][i]){
+        i++;
+    }
+    if(i<N){
+        return -1;
+    }
+    i=0;A[kandydat][kandydat]=true;
+    while(i<N && A[i][kandydat]){
+        i++;
+    }
+    if(i==N){
+        return kandydat;
+    }
+    else{
+        return -1;
+    }
+}
+
+int main(){
+
+  int A[N][N];
+
+  srand(time(NULL));
+  losuj(A);
+  wypisz(A);
+
+  cout<<endl<<"Indeks idola: "<<szukajido(A);
+  return 0;
+}
