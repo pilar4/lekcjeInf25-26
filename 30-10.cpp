@@ -178,6 +178,66 @@ int main() {
     return 0;
 }
 
+cw 6
+
+#include <iostream>
+#include <cmath>
+#include <ctime>
+using namespace std;
+
+const int N = 5;
+bool A[N][N];
+
+void los(){
+    int SzukajIdola;
+    for(int i=0; i<N; i++){
+        for(int j=0; j<N; j++){
+            A[i][j] = rand()%2;
+        }
+    }
+    if(rand()%2){
+        SzukajIdola = rand()%N;
+        for (int i=0; i<N; i++){
+            A[i][SzukajIdola] = true;
+        }
+        for (int j=0; j<N; j++){
+            A[SzukajIdola][j] = false;
+        }
+    }
+}
+
+void test(){
+    for(int i=0; i<N; i++){
+        for(int j=0; j<N; j++){
+            if(i!=j) cout<<A[i][j]<<" ";
+            else cout<<"  ";
+        }
+        cout<<endl;
+    }
+}
+
+int idol(){
+    for(int i=0; i<N; i++){
+        bool flag=true;
+        for(int j=0; j<N; j++){
+            if(i!=j && A[i][j] == false) flag=false; 
+        }
+        if(flag) return i;
+    }
+    return -1;
+}
+
+int main() {
+
+    srand(time(NULL));
+    los();
+    test();
+
+    cout<<endl<<"^^^^"<<idol()<<"^^^^"<<endl;
+    
+    return 0;
+}
+
 cw 7
 
 #include <iostream>
