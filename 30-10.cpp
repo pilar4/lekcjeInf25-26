@@ -177,3 +177,72 @@ int main() {
     
     return 0;
 }
+
+cw 7
+
+#include <iostream>
+#include <cmath>
+#include <ctime>
+using namespace std;
+
+const int N = 5;
+bool A[N][N];
+
+
+void los(){
+    int idol;
+    for(int i=0; i<N; i++){
+        for(int j=0; j<N; j++){
+            A[i][j] = rand()%2;
+        }
+    }
+    if(rand()%2){
+        idol = rand()%N;
+        for (int i=0; i<N; i++){
+            A[i][idol] = true;
+        }
+        for (int j=0; j<N; j++){
+            A[idol][j] = false;
+        }
+    }
+
+}
+
+void test(){
+    for(int i=0; i<N; i++){
+        for(int j=0; j<N; j++){
+            if(i!=j) cout<<A[i][j]<<" ";
+            else cout<<"   ";
+        }
+        cout<<endl;
+    }
+}
+
+int SzukajIdola(){
+    int kandydat=0, i;
+    bool jest_kandydat=false;
+    while(kandydat<N && !jest_kandydat){
+        i=0;
+        A[kandydat][kandydat]=false;
+        while (i<N && !A[kandydat][i]) i++;
+        if(i==N) jest_kandydat=true;
+        else kandydat++;
+    }
+    if(!jest_kandydat) return -1;
+
+    i=0; A[kandydat][kandydat]=true;
+    while (i<N && A[i][kandydat]) i++;
+    if(i==N) return kandydat;
+    else return -1;
+}
+
+int main() {
+
+    srand(time(NULL));
+    los();
+    test();
+
+    cout<<"Idol ma indeks: "<<SzukajIdola()<<endl;
+    
+    return 0;
+}
