@@ -233,7 +233,7 @@ int main() {
     los();
     test();
 
-    cout<<endl<<"^^^^"<<idol()<<"^^^^"<<endl;
+    cout<<endl<<"Idol: "<<idol()<<endl;
     
     return 0;
 }
