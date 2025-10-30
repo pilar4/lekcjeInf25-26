@@ -1,5 +1,17 @@
 cw. 1
-mozemy zapamietac ilosc sprawdzantch elementow w zmiennej pomocniczej i gdy przekroczy polowe rozmiaru tablicy to wiadomo ze nie bedzie lidera. 
+funkcja szukajlidera(A[])
+	iwystapien<-0
+	dla i <-0,1,...,n-1 wykonuj
+		jesli iwystapien >n/2 to
+			przerwij
+		ile<-0
+		dla j<- 0,1,...,n-1 wykonuj
+			jesli A[j]=A[i] to 
+				ile<-ile+1
+				iwytapien<-iwystapien+1
+		jesli ile>n div 2 to
+			zwroc A[i] i zakoncz
+	zwroc -1 zakoncz
 
 cw. 2
 Zrobilismy to na lekcji. O(n^2) i O(n)
