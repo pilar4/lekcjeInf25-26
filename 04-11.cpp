@@ -231,6 +231,65 @@ int main() {
     return 0;
 }
 
+zad 5
+#include <iostream>
+#include <algorithm>
+#include <cmath>
+#include <ctime>
+using namespace std;
+
+const int N = 10;
+int A[N];
+const int randmax = N;
+
+void los(){
+    for(int i=0;i<N;i++){
+        A[i]=rand()%randmax;
+    }
+
+    if(rand()%2==0){
+        for(int i=0;i<N;i++){
+            A[i]=i;
+        }
+        
+    }
+}
+
+void test(){
+    for(int i=0; i<N; i++){
+
+        cout<<A[i]<<" ";
+
+    }
+}
+
+int tab[N];
+void sprawdza(){
+    for(int i=0;i<N;i++){
+        tab[A[i]]++;
+    }
+
+    for(int i=0;i<N;i++){
+        if(tab[i]>1){
+            cout<<"POWTARZA SIE";
+            return;
+        }
+    }
+}
+
+
+
+
+int main() {
+
+    srand(time(NULL));
+    los();
+    test();
+    sprawdza();
+
+    return 0;
+}
+
 
 zad 6
 #include <iostream>
