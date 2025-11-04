@@ -8,7 +8,7 @@ const int N = 5;
 int A[N][N];
 
 void los(){
-    int SzukajIdola;
+
     for(int i=0; i<N; i++){
         for(int j=0; j<N; j++){
             A[i][j] = rand()%100;
@@ -56,7 +56,7 @@ const int N = 5;
 int A[N][N];
 
 void los(){
-    int SzukajIdola;
+
     for(int i=0; i<N; i++){
         for(int j=0; j<N; j++){
             A[i][j] = rand()%10;
