@@ -43,7 +43,62 @@ int main() {
     return 0;
 }
 
+zad 2
+#include <iostream>
+#include <cmath>
+#include <ctime>
+using namespace std;
 
+const int N = 5;
+int A[N][N];
+
+void los(){
+    int SzukajIdola;
+    for(int i=0; i<N; i++){
+        for(int j=0; j<N; j++){
+            A[i][j] = rand()%10;
+        }
+    }
+    if(rand()%2){
+        SzukajIdola = rand()%N;
+        for (int i=0; i<N; i++){
+            A[i][SzukajIdola] = true;
+        }
+        for (int j=0; j<N; j++){
+            A[SzukajIdola][j] = false;
+        }
+    }
+}
+
+void wypisz(){
+    for(int i=0; i<N; i++){
+        for(int j=0; j<N; j++){
+            cout<<A[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+}
+
+void sortwier(){
+    for(int k=0;k<N;k++){
+      sort(A[k],A[k]+N);
+    }
+}
+
+int main() {
+
+    srand(time(NULL));
+    los();
+    wypisz();
+
+    cout<<endl;
+
+    sortwier();
+
+    wypisz();
+
+    return 0;
+}
 
 
 zad 3
