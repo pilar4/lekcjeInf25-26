@@ -196,7 +196,7 @@ void sumyKolumn(){
 }
 
 int sumy_w[N];
-void sumyWierzy(){
+void sumyWierszy(){
     for(int i=0;i<N;i++){
         int suma=0;
         for(int j=0;j<N;j++){
@@ -215,7 +215,7 @@ int main() {
     los();
     test();
     sumyKolumn();
-    sumyWierzy();
+    sumyWierszy();
     
     cout<<endl;
     for(int i=0;i<N;i++){
