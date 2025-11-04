@@ -231,3 +231,61 @@ int main() {
     return 0;
 }
 
+
+zad 6
+#include <iostream>
+#include <cmath>
+#include <ctime>
+using namespace std;
+
+const int N = 16;
+int A[N][N];
+const int randommax = 400;
+
+void los(){
+
+    for(int i=0; i<N; i++){
+        for(int j=0; j<N; j++){
+            A[i][j] = rand()%randommax;
+        }
+        
+    }
+}
+
+void test(){
+    for(int i=0; i<N; i++){
+        for(int j=0; j<N; j++){
+            cout<<A[i][j]<<" ";
+
+        }
+        cout<<endl;
+    }
+}
+
+int tab[randommax];
+void zlicz_wystapienia(){
+    for(int i=0;i<N;i++){
+        for(int j=0;j<N;j++){
+            tab[A[i][j]]++;
+        }
+    }
+
+    for(int i=0;i<randommax;i++){
+        if(tab[i]>N/4) cout<<i<<" wystapilo wiecej niz N/4 razy"<<endl;
+    }
+}
+
+
+
+int main() {
+
+    srand(time(NULL));
+    los();
+    test();
+    cout<<endl;
+    zlicz_wystapienia();
+
+    
+    
+    return 0;
+}
