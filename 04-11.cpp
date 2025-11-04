@@ -100,3 +100,79 @@ int main() {
     return 0;
 }
 
+zad 4
+#include <iostream>
+#include <cmath>
+#include <ctime>
+using namespace std;
+
+const int N = 5;
+int A[N][N];
+
+void los(){
+    for(int i=0; i<N; i++){
+        for(int j=0; j<N; j++){
+            A[i][j] = rand()%10;
+        }
+    }
+}
+
+void test(){
+    for(int i=0; i<N; i++){
+        for(int j=0; j<N; j++){
+            cout<<A[i][j]<<" ";
+
+        }
+        cout<<endl;
+    }
+}
+
+int sumy_k[N];
+void sumyKolumn(){
+    for(int i=0;i<N;i++){
+        int suma=0;
+        for(int j=0;j<N;j++){
+            suma += A[j][i];
+        }
+        sumy_k[i]=suma;
+        // cout<<endl<<suma<<" test kolumny";
+    }
+    
+}
+
+int sumy_w[N];
+void sumyWierzy(){
+    for(int i=0;i<N;i++){
+        int suma=0;
+        for(int j=0;j<N;j++){
+            suma += A[i][j];
+        }
+        sumy_w[i]=suma;
+        // cout<<endl<<suma<<" test wierszy";
+    }
+}
+
+
+
+int main() {
+
+    srand(time(NULL));
+    los();
+    test();
+    sumyKolumn();
+    sumyWierzy();
+    
+    cout<<endl;
+    for(int i=0;i<N;i++){
+        for(int j=0;j<N;j++){
+            if(sumy_k[i]==sumy_w[j]){
+                cout<<"kolumna: "<<i+1<<" "<<"wiersz: "<<j+1<<endl;
+                return 0;
+            }
+        }
+    }
+    cout<<"BRAK";
+    
+    return 0;
+}
+
