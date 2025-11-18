@@ -1,28 +1,34 @@
-void los(){
-    int idol;
-    for(int i=0; i<N; i++){
-        for(int j=0; j<N; j++){
-            A[i][j] = rand()%2;
-        }
-    }
-    if(rand()%2){
-        idol = rand()%N;
-        for (int i=0; i<N; i++){
-            A[i][idol] = true;
-        }
-        for (int j=0; j<N; j++){
-            A[idol][j] = false;
-        }
-    }
+#include <iostream>
 
+using namespace std;
+
+int x, y;
+
+int euklides(int a, int b, int& x, int& y) {
+    x = 1, y = 0;
+    int x1 = 0, y1 = 1, a1 = a, b1 = b;
+    while (b1) {
+        int q = a1 / b1;
+        x = x1; x1 = x - q * x1;
+        y = y1; y1 = y - q * y1;
+        a1 = b1; b1 = a1 - q * b1;
+    }
+    return a1;
 }
 
-void test(){
-    for(int i=0; i<N; i++){
-        for(int j=0; j<N; j++){
-            if(i!=j) cout<<A[i][j]<<" ";
-            else cout<<"   ";
-        }
-        cout<<endl;
-    }
+int main()
+{
+	x = 1, y = 0;
+	int a, b;
+	
+	cout<<"Podaj liczby: ";
+	cin>>a>>b;
+	
+	euklides(a, b, x, y);
+	
+	cout<<"nwd("<<a<<", "<<b<<") = "
+	<<a<<" * "<<x<<" + "<<b<<" * "<<y<<" = "
+	<<a*x+b*y<<endl;
+	
+	return 0;
 }
