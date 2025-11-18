@@ -127,6 +127,81 @@ int main(){
 
 
 Zad. 6
+jest to funkcja szukająca czy dany element znajduje się w tablicy zwraca 0/1
+
+w każdej iteracji funkcja wykonuje 2 porownania O(log2 n)
+
+c)
+#include <iostream>
+#include <string>
+#include <cstdlib>
+#include <ctime>
+
+
+using namespace std;
+const int N=100;
+
+
+void losuj(int A[]){
+for(int i=0;i<N;i++){
+A[i]=rand()%100;
+}
+}
+
+
+
+
+void wypisz(int A[]){
+for(int i=0;i<N;i++){
+cout<<A[i]<<" ";
+}
+}
+
+
+void sortuj(int A[]){
+for(int i=0;i<N;i++){
+ for(int j=0;j<N-1;j++){
+   if(A[j%10]>A[(j+1)%10]){
+     swap(A[j],A[j+1]);
+   }
+ }
+}
+}
+
+
+
+
+bool F(int A[],int p,int k,int x){
+   if(p>=k){
+       return (A[p]==x);
+   }
+   int s=(p+k)/2;
+   if(A[s]<x){
+       return F(A,s+1,k,x);
+   }
+   return F(A,p,s,x);
+}
+
+
+int main(){
+   int p,k,x;
+   int A[N];
+   cin>>x;
+
+
+   srand(time(NULL));
+
+
+   losuj(A);
+   sortuj(A);
+   wypisz(A);
+
+
+   cout<<"  /// "<<F(A,0,N-1,x);
+
+
+   return 0;
+}
 
 
 Zad. 7
