@@ -49,6 +49,15 @@ int main(){
 
 Zad. 3
 
+funkcja ciagrek(n)
+	jezeli n = 1 to
+		zwroc 1
+	jezeli n = 2 to
+		zwroc 2
+	jeżeli n mod 2 = 1 to
+		zwroc ciagrek(n-1) + ciagrek(n-2)
+	w przeciwnym wypadku
+		zwroc ciagrek(n-1) + ciagrek(n-2) + 1
 
 Zad. 4
 funkcja ciag(n)
