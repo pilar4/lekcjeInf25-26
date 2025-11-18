@@ -1,4 +1,4 @@
-Praca samodzielna / korzystałem z pomocy ……………………………
+Praca samodzielna !!!!
 
 
 Zad. 1
