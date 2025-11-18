@@ -1,8 +1,9 @@
 Praca samodzielna / korzystałem z pomocy ……………………………
 
+
 Zad. 1
-c
-Zad. 2
+na lekcji
+c)
 funkcja ciagrek(n)
 	jezeli n=0 to
 		zwroc 1
@@ -14,6 +15,10 @@ funkcja ciagiter(n)
 	dla i <- 1,2,3…,n wykonuj
 		wynik <- 2* wynik
 	zwroc  wynik
+
+Zad. 2
+
+
 Zad. 3
 
 
