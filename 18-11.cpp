@@ -104,9 +104,8 @@ int main(){
 
 
 Zad. 5
-odwrotny ciag fibbonaciego (taki sam tylko na minusie)
-
-
+a)ciag fibbonaciego tylko wszedzie jest odejmowanie / liczby na minusie
+b) An = An-1 - An-2 gdzie A1=-1 i A2=-1
 #include <iostream>
 
 
@@ -125,8 +124,6 @@ int main(){
    int a; cin>>a;
    cout<<fibo(a);
 }
-
-
 
 
 Zad. 6
