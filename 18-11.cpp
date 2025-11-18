@@ -17,7 +17,35 @@ funkcja ciagiter(n)
 	zwroc  wynik
 
 Zad. 2
+#include <iostream>
 
+using namespace std;
+
+int NWD(int a, int b){
+    int pom;
+    while(b!=0){
+        pom=b;
+        b=a%b;
+        a=pom;
+    }
+    return a;
+}
+
+int main(){
+    int a,b,n;
+    cin>>n;
+    cin>>a;
+    cin>>b;
+    a=NWD(a,b);
+    for(int i=2;i<n;i++){
+        cin>>b;
+        a=NWD(a,b);
+    }
+
+    cout<<a;
+
+    return 0;
+}
 
 Zad. 3
 
