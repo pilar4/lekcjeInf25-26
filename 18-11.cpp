@@ -217,7 +217,52 @@ Zad. 8
 
 
 Zad. 9
+#include <iostream>
 
+using namespace std;
+
+int x, y;
+
+int euklides(int a, int b, int& x, int& y) {
+    int x0 = 1, y0 = 0;
+    int x1 = 0, y1 = 1;
+
+    while (b!=0) {
+        int q = a / b;
+        int temp = a%b;
+        a = b;
+        b = temp;
+
+        int x2 = x0 - q * x1;
+        int y2 = y0 - q * y1;
+
+        x0 = x1;
+        y0 = y1;
+        y1 = y2;
+        x1 = x2;
+    }
+
+    x = x0;
+    y = y0;
+
+    return a;
+    
+}
+
+int main()
+{
+	x = 1, y = 0;
+	int a, b;
+	
+	cout<<"Podaj liczby: ";
+	cin>>a>>b;
+	
+	euklides(a, b, x, y);
+	
+	cout<<"nwd = "<<a*x+b*y<<endl;
+	
+	return 0;
+}
 
 Zad. 10
 
