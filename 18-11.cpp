@@ -51,30 +51,48 @@ Zad. 3
 
 
 Zad. 4
+funkcja ciag(n)
+	jezeli n = 1
+		zwroc 2
+	zwroc ciag(n-1)*2
+
+
+funkcja main()
+	int x <- dane wejsciowe
+	jezeli x%2==1
+		wypisz ciag(x) * -1
+		zakoncz
+	ciag(x)
+
 #include <iostream>
 using namespace std;
 
 
+
+
 int ciag(int n){
-    
-    if(n==1){
-        return 2;
-    }
-    else{
-        return ciag(n-1)*2;
-    }
+  
+   if(n==1){
+       return 2;
+   }
+   else{
+       return ciag(n-1)*2;
+   }
+
 
 }
+
 
 int main(){
-    int x; cin>>x;
-    int y = ciag(x);
-    if(x%2==1){
-        y = y * -1;
-    }
-    cout<<y<<'\n';
-    
+   int x; cin>>x;
+   int y = ciag(x);
+   if(x%2==1){
+       y = y * -1;
+   }
+   cout<<y<<'\n';
+  
 }
+
 
 Zad. 5
 
