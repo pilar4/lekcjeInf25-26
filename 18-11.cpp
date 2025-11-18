@@ -131,6 +131,12 @@ Zad. 6
 
 Zad. 7
 
+	wpisz n;
+jezeli n=1 to przenies (a,c); zakoncz
+przenies(a,b) n-1 krazkow
+przenies(a,c) (najwiekszy) krazek
+przenies(b,c) n-1 krazkow
+
 
 Zad. 8
 
