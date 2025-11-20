@@ -1,34 +1,63 @@
-#include <iostream>
+const int N = 5
 
-using namespace std;
+void Losuj (int A[] [N + 1] rangle
 
-int x, y;
-
-int euklides(int a, int b, int& x, int& y) {
-    x = 1, y = 0;
-    int x1 = 0, y1 = 1, a1 = a, b1 = b;
-    while (b1) {
-        int q = a1 / b1;
-        x = x1; x1 = x - q * x1;
-        y = y1; y1 = y - q * y1;
-        a1 = b1; b1 = a1 - q * b1;
-    }
-    return a1;
-}
-
-int main()
 {
-	x = 1, y = 0;
-	int a, b;
-	
-	cout<<"Podaj liczby: ";
-	cin>>a>>b;
-	
-	euklides(a, b, x, y);
-	
-	cout<<"nwd("<<a<<", "<<b<<") = "
-	<<a<<" * "<<x<<" + "<<b<<" * "<<y<<" = "
-	<<a*x+b*y<<endl;
-	
-	return 0;
+
+for (int i = 0; i < N ;i++)
+
+for (int j = 0; j < N ;j++) A[i][j]=1+rand()%9;
+
+for (int i = 0 i<N;i++)
+
+{
+
+A[N][i] = 0 A[i][N] = emptyset
+
 }
+
+}
+
+void Wypisz(int A[] [N + 1] )
+
+{
+
+for (int i = 0 i<N;i++)
+
+{
+
+for (int j = 0; j < N ;j++) cout<<A[i][j]<<" ";
+
+cout<<endl;
+
+}
+
+}
+
+int MaksSuma(int A[] [N + 1] )
+
+{
+
+int suma=A[0][0], w = 0 k = 0
+
+for (int i = 1; i < 2N - 1 ;i++)
+
+if (A[w + 1][k] > A[w][k + 1])
+
+{
+
+suma+=A[w+1] [k]; w++;
+
+}
+
+else
+
+{
+
+suma+=A[w] [k+1]; k++;
+
+}
+
+return suma;
+
+228
