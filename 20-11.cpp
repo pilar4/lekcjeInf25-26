@@ -195,5 +195,56 @@ a max suma to 56 (trasa się nie zmienia)
 
 b Gdybyśmy wybrali metodę zachłanną to max suma=52 (nowa trasa) 
 
+cw 7 
+
+    a.
+    
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+const int N = 5;
+const int makswaga = 17;
+int K[N];
+
+struct przedmiot{
+    int wart, waga;
+};
+
+
+bool differentation(przedmiot a, przedmiot b){
+    return (float(a.wart)/a.waga > float(b.wart/b.waga));
+}
+
+
+int backpack(przedmiot P[], int makswaga, int K[]){
+    int makswart = 0;
+    for(int i=0; i<N; i++){
+        K[i]=makswaga/P[i].waga;
+        makswaga=makswaga%P[i].waga;
+        makswart+=K[i]*P[i].wart;
+    }
+    return makswart;
+}
+
+int main(){
+    
+    przedmiot P[N];
+    ifstream we("do_plecaka.txt");
+    for(int i=0; i<N; i++){
+        we>>P[i].wart>>P[i].waga;
+    }
+    we.close();
+    sort(P,P+N,differentation);
+
+    cout<<backpack(P, makswaga, K)<<endl;
+
+    return 0;
+}
+
+    b.
+        4 * 3 (wart 10)
+	    1 * 5 (wart 15)
 
 
