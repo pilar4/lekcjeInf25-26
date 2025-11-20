@@ -187,6 +187,9 @@ int main(){
     cout<<MaksSuma(A);
 
 }
+
+W większości przypadków działa poprawnie, powód tego wytłumaczyliśmy na lekcji
+
 cw 6
 a max suma to 56 (trasa się nie zmienia)
 
