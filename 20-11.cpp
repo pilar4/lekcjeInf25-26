@@ -137,3 +137,10 @@ int main(){
     cout<<MaksSuma(A);
 
 }
+cw 6
+a max suma to 56 (trasa się nie zmienia)
+
+b Gdybyśmy wybrali metodę zachłanną to max suma=52 (nowa trasa) 
+
+
+
