@@ -1,3 +1,8 @@
+cw 1
+
+https://docs.google.com/spreadsheets/d/15P3SY1jOkwHXhrhsQHvGrNaqSVuZ1CKTTTpe-UQup84/edit?usp=sharing
+link do gugla
+
 cw 2
 a)
 #include <iostream>
