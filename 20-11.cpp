@@ -85,7 +85,57 @@ zrobilismy na lekcji, system:
 300 zlotych
 400 zlotych
 
-cw5
+cw 4
+plik proby.txt to jest ten ktory mielismy pobrac, proby2.txt to tez ze zmodyfiowanymi danymi
+#include <iostream>
+#include <cmath>
+#include <ctime>
+#include <fstream>
+using namespace std;
+
+
+const int N=7;
+
+
+struct proba
+{
+   int pocz, czas;
+};
+
+
+bool Porownaj(proba a, proba b)
+{
+   return (a.pocz*60+a.czas<b.pocz*60+b.czas);
+}
+
+
+int MLP(proba P[])
+{
+   int lp=1, ost=0;
+   for (int i=1;i<N;i++)
+       if (P[i].pocz*60>=P[ost].pocz*60+P[ost].czas)
+       {
+           lp++;
+           ost=i;
+       }
+       return lp;
+}
+
+
+int main()
+{
+   proba P[N];
+   ifstream we("proby.txt");
+   for(int i=0;i<N;i++)
+       we>>P[i].pocz>>P[i].czas;
+   we.close();
+   sort(P,P+N,Porownaj);
+   cout<<"Maksymalna liczba prob: "<<MLP(P)<<'\n';
+   return 0;
+}
+
+
+cw 5
 #include <iostream>
 #include <algorithm>
 #include <cmath>
