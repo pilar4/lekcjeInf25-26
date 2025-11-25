@@ -61,3 +61,24 @@ int main(){
 }
 
 zad 3
+
+    dla i = 0 do n-1
+        oblicz stosunek[i] = v[i] / w[i]  (obliczamy stosunek wartości)
+    koniec dla
+
+    sortuj przedmioty według stosunku, zachowując indeksy
+
+
+    dla i = 0 do n-1
+        jeśli w[i] <= remaining_capacity
+            dodaj i do wybrane
+            remaining_capacity -= w[i]    przerwij
+    koniec dla
+
+    total_value = 0
+    dla i = 0 do rozmiar(wybrane)-1
+        total_value += v[wybrane[i]]
+    koniec dla
+
+zwroc total value
+
