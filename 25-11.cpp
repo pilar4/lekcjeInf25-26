@@ -82,3 +82,13 @@ zad 3
 
 zwroc total value
 
+zad 4
+Wydawanie reszty metoda zachłanna:
+czasowa O(n+r)
+Pamięciowa O(1)
+Max suma w kwadacie
+obliczeniowa O(N*M)
+Plecakowe sprawy:
+O(n*Log n)
+
+  
