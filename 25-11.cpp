@@ -135,6 +135,9 @@ int main(){
     return 0;
 }
 zad 6
+dane jest n filmów zaczynających się o n(x) godzinie i trwających n(y) minut. Szukamy ile najwięcej filmów można zobaczyć tego dnia.
+
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
