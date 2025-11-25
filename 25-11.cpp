@@ -134,3 +134,54 @@ int main(){
 
     return 0;
 }
+zad 6
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+
+
+int main() {
+    // przykladowe dane:
+    /*  5
+        1 3
+        3 4
+        3 6
+        4 7
+        7 9
+    
+        wyjście:
+        4
+    */
+    int N; cout<<"Liczba filmow: "; cin>>N;
+    
+    vector<pair<int, int>> filmy;
+    
+    for(int i=0;i<N;i++){
+        cin>>filmy[i].first>>filmy[i].second;
+    }
+    
+    //sortowanie po godzinie zakonczenia od najmniejszej do najwiekszej
+    sort(filmy.begin(), filmy.end(), [](const pair<int, int> p1, const pair<int, int> p2) {
+        return p1.second < p2.second;
+    });
+
+    
+    int czas = 0, obejrzane = 0;
+    
+    
+    for (int i = 0; i < N; i++) {
+        //ustawianie czasu na godzine skonczenia ogladania filmu
+        // jezeli godzina rozpoczecia jest mniejsza niz czas to pomijamy film
+        if (filmy[i].first >= czas) {
+            obejrzane++;
+            czas = filmy[i].second;  
+        }
+    }
+
+    cout << obejrzane << endl;
+
+    return 0;
+}
