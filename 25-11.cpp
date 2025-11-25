@@ -84,7 +84,7 @@ zwroc total value
 
 zad 4
 Wydawanie reszty metoda zachłanna:
-czasowa O(n+r)
+czasowa O(n)
 Pamięciowa O(1)
 Max suma w kwadacie
 obliczeniowa O(n)
