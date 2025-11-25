@@ -91,4 +91,46 @@ obliczeniowa O(n)
 Plecakowe sprawy:
 O(n*Log n)
 
-  
+zad 5
+
+#include <iostream>
+
+using namespace std;
+
+const int N = 5;
+const int makswaga = 15;
+
+struct przedmiot{
+    int wart, waga;
+};
+
+
+bool differentation(przedmiot a, przedmiot b){
+    return (float(a.wart)/a.waga > float(b.wart/b.waga));
+}
+
+
+int backpack(przedmiot P[], int makswaga){
+    int makswart = 0;
+    for(int i=0; i<N; i++){
+            if(makswaga-P[i].waga>0){
+                makswaga=makswaga-P[i].waga;
+                makswart+=P[i].wart;
+            }
+            else break;
+    }
+    return makswart;
+}
+
+int main(){
+    
+    przedmiot P[N];
+    for(int i=0; i<N; i++){
+        cin>>P[i].wart>>P[i].waga;
+    }
+    sort(P,P+N,differentation);
+
+    cout<<backpack(P, makswaga)<<endl;
+
+    return 0;
+}
