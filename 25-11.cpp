@@ -87,7 +87,7 @@ Wydawanie reszty metoda zachłanna:
 czasowa O(n+r)
 Pamięciowa O(1)
 Max suma w kwadacie
-obliczeniowa O(N*M)
+obliczeniowa O(n)
 Plecakowe sprawy:
 O(n*Log n)
 
