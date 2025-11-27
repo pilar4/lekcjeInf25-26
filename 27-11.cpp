@@ -96,6 +96,56 @@ int main(){
     return 0;
 }
 
+cw 6
+#include <iostream>
+
+using namespace std;
+
+const int N=4;
+int P[N][N];
+
+void los(){
+   for(int i=0; i<N; i++){
+       for(int j=0; j<N; j++){
+           P[i][j] = rand()%10;
+       }
+   }
+}
+
+void wypisz(){
+   for(int i=0; i<N; i++){
+       for(int j=0; j<N; j++){
+           cout<<P[i][j]<<" ";
+       }
+       cout<<endl;
+   }
+}
+
+int MaxSum(){
+    for(int i=1;i<N;i++){
+        P[0][i]+=P[0][i-1];
+        P[i][0]+=P[i-1][0];
+    }
+    for(int i=1;i<N;i++){
+        for(int j=1;j<N;j++){
+            P[i][j]+=max(P[i-1][j],P[i][j-1]);
+        }
+    }
+    return P[N-1][N-1];
+}
+
+int main(){
+
+    los();
+    wypisz();
+
+    cout<<endl;
+
+    cout<<MaxSum();
+    
+    return 0;
+}
+
 cwicz 8
 
 #include <iostream>
