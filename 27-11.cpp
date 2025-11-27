@@ -155,7 +155,7 @@ przedmiot 3 -> wartosc (4) + 11
 przedmiot 4 -> wartosc (3) + 15
 
 b)
-https://gamma.app/docs/Problem-Plecakowy-i-Programowanie-Dynamiczne-ugpuj21ruf7pkcj
+ w załączniku
 
 cwicz 8
 
