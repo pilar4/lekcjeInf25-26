@@ -146,6 +146,17 @@ int main(){
     return 0;
 }
 
+cw 7
+a)
+dodajemy przedmiot 0 -> wartosc(6) + 3
+dodajemy przedmiot 1 -> wartosc(6) + 4
+przedmiot 2 -> wartosc(5) + 10
+przedmiot 3 -> wartosc (4) + 11
+przedmiot 4 -> wartosc (3) + 15
+
+b)
+https://gamma.app/docs/Problem-Plecakowy-i-Programowanie-Dynamiczne-ugpuj21ruf7pkcj
+
 cwicz 8
 
 #include <iostream>
