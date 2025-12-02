@@ -207,5 +207,6 @@ int main(){
 }
 
 Ćwiczenie 11
-Autostrada i strategia: STRA
-Literatura i matematyka: TE lub AT
+ Autostrada i strategia: S(5) - T(6) - R(7) - A(8) - A(10)
+Literatura i matematyka: T(3) - E(4) - A(6) - T(7) - A(10)
+
