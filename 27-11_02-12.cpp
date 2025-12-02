@@ -205,3 +205,7 @@ int main(){
 
     return 0;
 }
+
+Ćwiczenie 11
+Autostrada i strategia: STRA
+Literatura i matematyka: TE lub AT
