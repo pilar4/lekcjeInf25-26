@@ -206,6 +206,82 @@ int main(){
     return 0;
 }
 
+cwiczenie 9
+
+#include <iostream>
+#include <fstream>
+
+
+using namespace std;
+
+
+const int N = 5;
+const int makswaga = 17;
+
+
+struct przedmiot{
+   int wart, waga;
+};
+
+
+
+
+int backpack(przedmiot P[]){
+
+    int o[makswaga+1];
+    int w[makswaga+1];
+    for(int i=0; i <= makswaga; i++){
+       w[i]=0; o[i]=-1;
+   }
+   for(int i=0; i <= makswaga; i++){
+       for(int j=0; j < N; j++){
+           if(P[j].waga <= i){
+               if(w[i-P[j].waga] + P[j].wart > w[i]){
+                   w[i] = w[i-P[j].waga] + P[j].wart;
+                   o[i] = j;
+               }
+           }
+       }
+   }
+
+   int ile[N]={0};
+   int wagaczasowa = makswaga;
+
+   while(wagaczasowa > 0 && o[wagaczasowa] != -1){
+        int przedm = o[wagaczasowa];
+        ile[przedm]++;
+        wagaczasowa -= P[przedm].waga;
+   }
+
+    for (int i = 0; i < N; i++) {
+        if (ile[i] > 0) {
+            cout << "wart: " << P[i].wart <<" waga: "<< P[i].waga <<" ilosc: "<< ile[i] << "\n";
+        }
+    }
+
+
+   return w[makswaga];
+}
+
+
+int main(){
+  
+   przedmiot P[N];
+
+   ifstream we("do_plecaka.txt");
+   for(int i=0; i<N; i++){
+       we>>P[i].wart>>P[i].waga;
+   }
+   we.close();
+
+
+   cout<<backpack(P)<<endl;
+
+
+   return 0;
+}
+
+
 cwiczenie 10 
 
 w files niggers
