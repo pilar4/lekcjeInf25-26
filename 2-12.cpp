@@ -142,3 +142,41 @@ int main(){
 
    return 0;
 }
+
+
+zadanie numer cztery
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+
+    vector<int> c(n + 1);
+    for (int i = 1; i <= n; i++) cin >> c[i];
+
+    vector<int> R(n + 1, 0);
+    vector<int> S(n + 1, 0);
+
+    for (int j = 1; j <= n; j++) {
+        int najlepszy = -1000000000;
+        int najlepsze_i = 1;
+
+        for (int i = 1; i <= j; i++) {
+            int wartosc = c[i] + R[j - i];
+            if (wartosc > najlepszy) {
+                najlepszy = wartosc;
+                najlepsze_i = i;
+            }
+        }
+
+        R[j] = najlepszy;
+        S[j] = najlepsze_i;
+    }
+
+    cout << "Maksymalny zysk: " << R[n] <<endl;
+
+    return 0;
+}
