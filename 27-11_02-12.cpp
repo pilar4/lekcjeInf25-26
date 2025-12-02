@@ -284,9 +284,63 @@ int main(){
 
 cwiczenie 10 
 
-w files niggers
+w files 
 
 Ćwiczenie 11
  Autostrada i strategia: S(5) - T(6) - R(7) - A(8) - A(10)
 Literatura i matematyka: T(3) - E(4) - A(6) - T(7) - A(10)
 
+    
+cwiczenie 12
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+int main()
+{
+    string s, t;
+    cout<<"Pierwszy napis: ";
+    cin>>s;
+    cout<<"Drugi napis: ";
+    cin>>t;
+    int n=s.size();
+    int m=t.size();
+
+    int d[1001][1001];
+
+    for(int i=0;i<=n;i++)
+        d[i][0]=0;
+
+    for(int j=0;j<=m;j++)
+        d[0][j]=0;
+
+    for(int i=1; i<=n; i++)
+    {
+        for(int j=1; j<=m; j++)
+        {
+            if(s[i-1]==t[j-1])
+            {
+                d[i][j]=d[i-1][j-1]+1;
+            }
+            else
+            {
+                if(d[i-1][j]>d[i][j-1])
+                    d[i][j]=d[i-1][j];
+                else
+                    d[i][j]=d[i][j-1];
+            }
+        }
+    }
+
+    int i=n; int j=m; string nwp="";
+    while (i>0 && j>0)
+        if(s[i-1]==t[j-1])
+        {
+            nwp=s[i-1]+nwp;
+            i--; j--;
+        }
+        else if(d[i][j-1]>d[i-1][j]) j--;
+            else i--;
+        cout<<"Podciag: "<<nwp<<endl;
+}
