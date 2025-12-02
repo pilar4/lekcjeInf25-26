@@ -216,3 +216,77 @@ int main() {
     return 0;
 }
 
+zad 6
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <string>
+
+using namespace std;
+const int N=10;
+
+int D[N+1][N+1];
+
+void losuj(int A[]){
+for(int i=0;i<N;i++){
+  A[i]=rand()%10;
+}
+}
+
+
+void wypisz(int A[]){
+for(int i=0;i<N;i++){
+  cout<<A[i]<<" ";
+}
+}
+
+void NajdWspolPoc(int A[], int B[]){
+    int i=N; int j=N; string nwp="";
+    while(i>0 && j>0){
+        if(A[i-1]==B[j-1]){
+            nwp=char(A[i-1]+48)+nwp;
+            i--; j--;
+        }
+        else if(D[i][j-1]>D[i-1][j]){
+            j--;
+        }
+        else{
+            i--;
+        }
+    }
+    cout<<nwp;
+}
+
+void tworzDP(int A[], int B[]){
+    for(int i = 0; i <= N; i++){
+        for(int j = 0; j <= N; j++){
+            if(i == 0 || j == 0)
+                D[i][j] = 0;
+            else if(A[i-1] == B[j-1])
+                D[i][j] = D[i-1][j-1] + 1;
+            else
+                D[i][j] = max(D[i-1][j], D[i][j-1]);
+        }
+    }
+}
+
+int main(){
+   int A[N];
+   int B[N];
+
+   srand(time(NULL));
+   losuj(A);
+   losuj(B);
+
+   wypisz(A);
+   cout<<endl<<endl;
+   wypisz(B);
+   cout<<endl<<endl;
+
+   tworzDP(A,B);
+
+   NajdWspolPoc(A,B);
+
+   return 0;
+}
+
