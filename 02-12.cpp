@@ -144,7 +144,7 @@ int main(){
 }
 
 
-zadanie numer cztery
+zadanie 4
 
 #include <iostream>
 #include <vector>
@@ -180,3 +180,39 @@ int main() {
 
     return 0;
 }
+
+
+zad 5
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    cout << "podaj liczbe stosow: ";
+    int n; 
+    cin >> n;
+
+    vector<int> stosy(n);
+    for (int i = 0; i < n; i++) {
+        cout << "podaj liczbe zetonow w stosie numer " << i+1 << ": ";
+        cin >> stosy[i];
+    }
+
+    if (n == 1) {
+        cout << "maksymalny wynik to: " << stosy[0] << endl;
+        return 0;
+    }
+
+    vector<int> vec(n);
+    vec[0] = stosy[0];
+    vec[1] = max(stosy[0], stosy[1]);
+
+    for (int i = 2; i < n; i++) {
+        vec[i] = max(vec[i-1], vec[i-2] + stosy[i]);
+    }
+
+    cout << "maksymalny wynik to: " << vec[n-1] << endl;
+
+    return 0;
+}
+
