@@ -1,5 +1,3 @@
-cwiczenie 1
-
 czwicz 2 
 
   #include <iostream>
@@ -185,6 +183,78 @@ int main(){
     cout<<endl;
 
     return 0;
+}
+
+
+cw 6
+#include <iostream>
+#include <ctime>
+#include <cstdlib>
+
+using namespace std;
+
+const int N = 20;
+
+void losuj(int A[]){
+    for(int i=0; i<N; i++){
+        A[i] = rand()%100;
+    }
+}
+
+void wypisz(int A[]){
+    for(int i=0; i<N; i++){
+        cout<<A[i]<<" ";
+    }
+}
+
+
+
+void merge_togheter(int A[], int p, int s, int k){
+    int i,j,m;
+    int B[N/2+1];
+    for(i=p;i<=s;i++) B[i-p]=A[i];
+    i=0; j=s+1; m=p;
+    while (i<=s-p && j<=k)
+    {
+        if(B[i]<A[j]){
+            A[m]=B[i]; i++;
+        }
+        else{
+            A[m]=A[j]; j++;
+        }
+        m++;
+    }
+    while (i<=s-p){
+        A[m]=B[i]; i++; m++;
+    }
+}
+
+void merge_sort(int A[], int p, int k){
+    if(p<k){
+        int s=(p+k)/2;
+        merge_sort(A,p,s);
+        merge_sort(A,s+1,k);
+        merge_togheter(A,p,s,k);
+    }
+}
+
+int main(){
+    int A[N];
+    srand(time(NULL));
+   losuj(A);
+   wypisz(A);
+   cout<<endl<<endl;
+
+
+   merge_sort(A, 0, N-1);
+
+
+   wypisz(A);
+   cout<<endl;
+
+
+   return 0;
+    
 }
 
 
