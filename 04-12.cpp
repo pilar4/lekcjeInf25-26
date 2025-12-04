@@ -115,3 +115,77 @@ int main(){
 
     return 0;
 }
+
+
+czwicz 5
+
+#include <iostream>
+#include <ctime>
+#include <cstdlib>
+
+using namespace std;
+
+const int N = 20;
+
+void losuj(int A[]){
+    for(int i=0; i<N; i++){
+        A[i] = rand()%100;
+    }
+}
+
+void wypisz(int A[]){
+    for(int i=0; i<N; i++){
+        cout<<A[i]<<" ";
+    }
+}
+
+void merge(int A[], int p, int s, int k){
+    int i=p, j=s+1, m=p;
+    int B[N];
+    while(i<=s && j<=k){
+        if(A[i] < A[j]){
+            B[m] = A[i]; i++;
+        }
+        else{
+            B[m] = A[j]; j++;
+        }
+        m++;
+    }
+    while(i<=s){
+        B[m] = A[i]; i++; m++;
+    }
+    while(j<=k){
+        B[m] = A[j]; j++; m++;
+    }
+    for(i=p; i<=k; i++){
+        A[i] = B[i];
+    }
+}
+
+void mergeSort (int A[], int p, int k){
+    if(p < k){
+        int s= (p+k)/2;
+        mergeSort(A, p, s);
+        mergeSort(A, s+1, k);
+        merge(A, p, s, k);
+    }
+}
+
+int main(){
+
+    int A[N];
+    srand(time(NULL));
+    losuj(A);
+    wypisz(A);
+    cout<<endl<<endl;
+
+    mergeSort(A, 0, N-1);
+
+    wypisz(A);
+    cout<<endl;
+
+    return 0;
+}
+
+
+
