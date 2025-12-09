@@ -182,6 +182,86 @@ int main()
 }
 
 Zad. 4
+#include <iostream>
+#include <ctime>
+#include <cstdlib>
+
+using namespace std;
+
+const int N=10;
+
+void losuj(int A[]){
+for(int i=0;i<N;i++){
+A[i]=rand()%10;
+}
+}
+
+void wypisz(int A[]){
+for(int i=0;i<N;i++){
+cout<<A[i]<<" ";
+}
+}
+
+void SorPrzWst(int A[], int p, int k){
+    for(int i = p+1; i <= k; i++){
+        int key = A[i];
+        int j = i - 1;
+        while(j >= p && A[j] > key){
+            A[j+1] = A[j];
+            j--;
+        }
+        A[j+1] = key;
+    }
+}
+
+void QuiSot(int A[], int p, int k){
+   int i, j, m;
+   while(p<k){
+        if(k-p+1<5){
+            SorPrzWst(A, p, k);
+            break;
+        }
+        else{
+       i=p; j=k; m=A[(p+k)/2];
+       while(i<=j){
+           while(A[i]<m){
+               i++;
+           }
+           while(A[j]>m){
+               j--;
+           }
+           if(i<=j){
+               swap(A[i],A[j]);
+               i++; j--;
+           }
+       }
+       if(j-p<k-i){
+           QuiSot(A,p,j);
+           p=i;
+       }
+       else{
+           QuiSot(A,i,k);
+           k=j;
+       }
+        }
+   }
+}
+
+int main(){
+
+   int A[N];
+
+   srand(time(NULL));
+   losuj(A);
+   wypisz(A);
+
+   cout<<endl<<endl;
+
+   QuiSot(A,0,N-1);
+   wypisz(A);
+
+   return 0;
+}
 
 Zad. 5
 
