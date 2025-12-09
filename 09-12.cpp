@@ -1,4 +1,4 @@
-Zadania wykonane samodzielnie / z pomocą …………………………
+Zadania wykonane samodzielnie bardzo samodzielnie
 
 Zad. 1
 
