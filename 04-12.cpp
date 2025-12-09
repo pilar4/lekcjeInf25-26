@@ -258,7 +258,6 @@ int main(){
 }
 
 cw 7
-nieskonczone
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
@@ -269,48 +268,62 @@ const int N = 5;
 
 void Losuj(int A[])
 {
-    for(int i=0; i<N; i++)
+    for (int i = 0; i < N; i++)
     {
-        A[i] = rand()%100;
+        A[i] = rand() % 100;
     }
 }
 
 void Wypisz(int A[])
 {
-    for(int i=0; i<N; i++)
+    for (int i = 0; i < N; i++)
     {
-        cout<<A[i]<<" ";
+        cout << A[i] << " ";
     }
+    cout << endl;
 }
-
 
 void Merge_insitu(int A[], int p, int s, int k)
 {
-    int i,j,pom;
-    for(i=p;i<=s;i++)
-        if(A[s+1]<A[i])
+    int i, j, pom;
+    for (i = p; i <= s; i++)
+        if (A[s + 1] < A[i])
         {
-            pom=A[i];
-            A[i]=A[s+1];
-            j=s+2;
-            while(j<=k && A[j]<pom)
+            pom = A[i];
+            A[i] = A[s + 1];
+            j = s + 2;
+            while (j <= k && A[j] < pom)
             {
-                A[j-1]=A[j];
+                A[j - 1] = A[j];
                 j++;
             }
-            A[j-1]=pom;
+            A[j - 1] = pom;
         }
 }
 
-int  main()
+void MergeSort(int A[], int p, int k)
+{
+    if (p >= k) return;
+
+    int s = (p + k) / 2;
+
+    MergeSort(A, p, s);
+    MergeSort(A, s + 1, k); 
+
+    Merge_insitu(A, p, s, k); 
+}
+
+int main()
 {
     int A[N];
     srand(time(NULL));
     Losuj(A);
     Wypisz(A);
-    Merge_insitu(A,0,N/2,N-1);
+    MergeSort(A, 0, N - 1);
     Wypisz(A);
+
     return 0;
 }
+
 
 
