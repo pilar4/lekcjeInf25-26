@@ -60,6 +60,59 @@ int main(){
 
 Zad. 2
 
+    #include <iostream>
+#include <ctime>
+#include <cstdlib>
+
+using namespace std;
+
+const int N = 10;
+
+void Losuj(int A[]){
+    for (int i = 0; i < N; i++){
+        A[i] = rand() % 100;
+    }
+}
+
+void Wypisz(int A[]){
+    for (int i = 0; i < N; i++){
+        cout << A[i] << " ";
+    }
+    cout << endl;
+}
+
+int combine(int A[], int B[], int C[]){
+    
+    int i=0, j=0, np=N;
+    while(np>0){
+        if(A[i]<=B[j]){
+            C[N-np] = A[i];
+            i++; np--;
+        }
+        else {
+            C[N-np] = B[j];
+            j++; np--;
+        }
+    }
+}
+
+
+
+int main(){
+
+    int A[N]; int B[N]; int C[N];
+    srand(time(NULL));
+    Losuj(A); Losuj(B);
+    Wypisz(A); Wypisz(B);
+    sort(A, A + N); sort(B, B + N);
+
+    combine(A, B, C);
+
+    Wypisz(C);
+
+    return 0;
+}
+
 Zad. 3
 #include <iostream>
 #include <ctime>
