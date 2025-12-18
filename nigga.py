@@ -1,1 +1,1 @@
-asf nasdgu nsdgoiadm gasdgoaklgas dgsdg 
+print("asf nasdgu nsdgoiadm gasdgoaklgas dgsdg")
