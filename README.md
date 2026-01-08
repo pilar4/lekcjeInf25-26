@@ -17,4 +17,4 @@ informatyki
 disclaimer: I, nor any contributor take responsibility for abominations you can find here 
 
 
-brakuje nam 1, 3, 5, 8, 10, 12, 13, 14, 15, 16, 17, 19, 22, 24, 26, 29, 31
+brakuje nam 1, 3, 5, 10, 12, 13, 14, 15, 16, 17, 19, 22, 24, 26, 29, 31
