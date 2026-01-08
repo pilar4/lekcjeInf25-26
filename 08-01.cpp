@@ -22,3 +22,77 @@ cw 3
 
 cw 4
 
+#include <iostream>
+#include <stack>
+
+using namespace std;
+
+string ONP(string w) {
+
+    stack<char> stos; 
+    stos.push('#');
+    string onp = "";
+
+    for (int i = 0; i < w.size(); i++)
+    {
+        if (w[i] == '(')
+        {
+            stos.push('(');
+            continue;
+        }
+        
+        if (w[i] == ')')
+        {
+            while (stos.top() != '(')
+            {
+                onp = onp + stos.top();
+                stos.pop();
+            }
+            stos.pop();
+            continue;
+        }
+        
+        if (w[i] == '+' || w[i] == '-')
+        {
+            while (stos.top() != '#' && stos.top() != '(')
+            {
+                onp = onp + stos.top();
+                stos.pop();
+            }
+            stos.push(w[i]);
+            continue;
+        }
+        
+        if (w[i] == '*' || w[i] == '/')
+        {
+            if (stos.top() == '*' || stos.top() == '/')
+            {
+                onp = onp + stos.top();
+                stos.pop();
+            }
+            stos.push(w[i]);
+        }
+        else 
+        {
+            onp = onp + w[i];
+        }
+    }
+
+    while (stos.top() != '#')
+    {
+        onp = onp + stos.top(); 
+        stos.pop();
+    }
+
+    stos.pop();
+    return onp;
+}
+
+
+int main(){
+
+    string w; cin>>w;
+    cout<<ONP(w);
+
+    return 0;
+}
