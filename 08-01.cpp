@@ -170,3 +170,41 @@ int main()
 
     return 0;
 }
+
+cw 6
+
+#include <iostream>
+#include <stack>
+
+using namespace std;
+
+int oblicz(string &onp){
+    char znak = onp[onp.size()-1];
+    onp.erase(onp.size()-1,1);
+    if(znak>='0' && znak<='9'){
+        return znak-48;
+    }
+    else{
+        int arg2 = oblicz(onp);
+        int arg1 = oblicz(onp);
+        switch (znak){
+            case '+':
+                return arg1+arg2;
+            case '-':
+                return arg1-arg2;
+            case '*':
+                return arg1*arg2;
+            case '/':
+                return arg1/arg2;
+        }
+    }
+}
+
+
+int main(){
+
+    string onp; cin>>onp;
+    cout<<oblicz(onp);
+
+    return 0;
+}
