@@ -294,3 +294,31 @@ int main()
 
     return 0;
 }
+
+zad7
+#include <iostream>
+#include <string>
+#include <stack>
+
+using namespace std;
+
+int main(){
+    string s; cin>>s;
+    int licznik=0;
+
+    for(int i=0;i<s.size();i++){
+        if(s[i]>=48 && s[i]<=57){
+            licznik++;
+        }
+        else if(s[i]==42 or s[i]==43 or s[i]==45 or s[i]==47){
+            licznik--;
+        }
+    }
+    if(licznik==1){
+        cout<<"TAK";
+    }
+    else{
+        cout<<"NIE";
+    }
+    return 0;
+}
