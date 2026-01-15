@@ -1,5 +1,3 @@
-#include 
-
 zad 1
 
 #include <iostream>
