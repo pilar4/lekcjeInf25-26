@@ -166,6 +166,54 @@ int main (){
 
 
 zad 5
+#include <iostream>
+#include <string>
+
+
+
+
+using namespace std;
+
+
+
+
+int main (){
+   string a; cin>>a;
+   int zwykly=0, kwadratowy=0, klamra=0;
+   for(int i=0; i<a.size(); i++){
+       if(a[i]=='('){
+           zwykly++;
+       }
+       else if(zwykly>0 && a[i]==')'){
+           zwykly--;
+       }
+       else if(a[i]=='['){
+           kwadratowy++;
+       }
+       else if(kwadratowy>0 && a[i]==']'){
+           kwadratowy--;
+       }
+       else if(a[i]=='{'){
+           klamra++;
+       }
+       else if(klamra>0 && a[i]=='}'){
+           klamra--;
+       }
+       else{
+           cout<<"NIE";
+           return 0;
+       }
+
+
+   }
+   if(zwykly==0 && kwadratowy==0 && klamra==0)
+       cout<<"TAK";
+   else
+       cout<<"NIE";
+   return 0;
+}
+
+
 
 zad 6
 
