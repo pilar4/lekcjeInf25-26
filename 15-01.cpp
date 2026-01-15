@@ -147,6 +147,24 @@ int main(){
 }
 
 zad 4
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main (){
+    string s;cin>>s;
+    stack<int> stos;
+    for(int i=s.size()-1;i>-1;i--){
+        stos.push(s[i]);
+    }
+
+    for(int i=0;i<s.size();i++){
+        cout<<char(stos.top())<<endl;
+        stos.pop();
+    }
+}
+
 
 
 zad 5
