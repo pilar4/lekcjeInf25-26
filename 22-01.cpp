@@ -268,7 +268,175 @@ int main(){
 
    return 0;
 }
+zad 4
+#include <iostream>
+#include <fstream>
+#include <stack>
+#include <string>
+#include <iomanip>
 
+using namespace std;   
+
+const int n = 20;
+
+struct pole
+{
+   int w, k;
+};
+
+void wczytajlab(int lab[][n])
+{
+   string s;
+   ifstream we("labirynt.txt");
+
+
+   for(int i=0;i<n;i++)
+   {
+       we>>s;
+       for(int j=0;j<n;j++)
+       {
+           if(s[j]=='X')
+           {
+               lab[i][j]=-1;
+           }
+           else
+           {
+               lab[i][j]=0;
+           }
+       }
+   }
+   we.close();
+}
+
+void wypiszlab(int lab[][n])
+{
+   cout<<"   ";
+   for(int j=0;j<n;j++)
+   {
+       cout<<setw(3)<<j;
+   }
+   cout<<endl;
+   for(int i=0;i<n;i++)
+   {
+       cout<<setw(3)<<i;
+       for(int j=0;j<n;j++)
+       {
+           if(lab[i][j]==-1)
+           {
+               cout<<"  X";
+           }
+           else if(lab[i][j]==-2)
+           {
+               cout<<"  D";
+           }
+           else
+           {
+               cout<<"   ";
+           }
+       }
+       cout<<endl;
+   }
+}
+
+bool szukaj_ze_stosem(int lab[][n], int w, int k, pole &p2, stack<pole> &stos)
+{
+    pole aktualne;
+    aktualne.w = w;
+    aktualne.k = k;
+
+    stos.push(aktualne);
+
+    if (w == 0 || w == n - 1 || k == 0 || k == n - 1)
+    {
+        p2 = aktualne;
+        return true;
+    }
+    
+    if (lab[w - 1][k] == 0)
+    {
+        lab[w - 1][k] = lab[w][k] + 1;
+        if (szukaj_ze_stosem(lab, w - 1, k, p2, stos)) return true;
+    }
+
+    if (lab[w + 1][k] == 0)
+    {
+        lab[w + 1][k] = lab[w][k] + 1;
+        if (szukaj_ze_stosem(lab, w + 1, k, p2, stos)) return true;
+    }
+
+    if (lab[w][k - 1] == 0)
+    {
+        lab[w][k - 1] = lab[w][k] + 1;
+        if (szukaj_ze_stosem(lab, w, k - 1, p2, stos)) return true;
+    }
+
+    if (lab[w][k + 1] == 0)
+    {
+        lab[w][k + 1] = lab[w][k] + 1;
+        if (szukaj_ze_stosem(lab, w, k + 1, p2, stos)) return true;
+    }
+
+    stos.pop();
+
+    return false;
+}
+
+bool droga(int lab[][n], pole p1, pole &p2)
+{
+    stack<pole> stos;
+
+    lab[p1.w][p1.k] = 1;
+
+    bool znaleziono = szukaj_ze_stosem(lab, p1.w, p1.k, p2, stos);
+    
+    return znaleziono;
+}
+
+void oznaczdroge(int Lab[][n], int w, int k)
+{
+   int x = Lab[w][k];
+   Lab[w][k] = -2;
+
+   while (x > 1)
+   {
+       x--;
+       if (w > 0 && Lab[w - 1][k] == x)
+           w--;
+       else if (w < n - 1 && Lab[w + 1][k] == x)
+           w++;
+       else if (k > 0 && Lab[w][k - 1] == x)
+           k--;
+       else
+           k++;
+
+       Lab[w][k] = -2;
+   }
+}
+
+int main()
+{
+   int lab[n][n];
+   pole p1, p2;
+
+   wczytajlab(lab);
+   wypiszlab(lab);
+
+   cout<<"WSPOLRZEDNE POLA STARTOWEGO: "<<endl;
+   cout<<"w = "; cin>>p1.w;
+   cout<<"k = "; cin>>p1.k;
+
+
+   if(droga(lab,p1,p2))
+   {
+       oznaczdroge(lab,p2.w,p2.k);
+       wypiszlab(lab);
+   }
+   else
+   {
+       cout<<"BRAK DROGI!!!";
+   }
+   return 0; 
+}
 
 zad 5
 
