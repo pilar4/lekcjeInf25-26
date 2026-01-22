@@ -584,3 +584,101 @@ int main()
 
     return 0;
 }
+cw 7
+#include <iostream>
+using namespace std;
+
+const int N = 8;
+bool tab[N][N];
+
+bool szach(int w, int k){
+    // kolejno kolumny, wiersze, skosy:
+    // lewo gora, prawo gora, lewo dol, prawo dol
+
+    for(int i = 0; i < N; i++)
+        if(tab[i][k] && i != w)
+            return true;
+
+    for(int j = 0; j < N; j++)
+        if(tab[w][j] && j != k)
+            return true;
+
+    for(int i = w-1, j = k-1; i >= 0 && j >= 0; i--, j--)
+        if(tab[i][j]) return true;
+    
+    for(int i = w-1, j = k+1; i >= 0 && j < N; i--, j++)
+        if(tab[i][j]) return true;
+
+    for(int i = w+1, j = k-1; i < N && j >= 0; i++, j--)
+        if(tab[i][j]) return true;
+
+    for(int i = w+1, j = k+1; i < N && j < N; i++, j++)
+        if(tab[i][j]) return true;
+
+    return false;
+}
+
+void wypisz(){
+    for(int i = 0; i < N; i++){
+        for(int j = 0; j < N; j++){
+            cout << tab[i][j] << " ";
+        }
+        cout << endl;
+    }
+    cout<<endl;
+}
+
+int counter = 0;
+
+void hetman(int w) {
+    if (w == N) {
+        wypisz();
+        counter++;
+        return;
+    }
+
+    for (int k = 0; k < N; k++) {
+        if (!szach(w, k)) {
+            tab[w][k] = true;
+            hetman(w + 1);
+            // cofanie jezeli jest szach
+            tab[w][k] = false;
+        }
+    }
+}
+
+int main(){
+
+    if (N==2) {
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                tab[i][j] = true;
+                wypisz();
+                tab[i][j] = false;
+                counter++;
+            }
+        }
+    } else if(N==3) {
+        for (int i1 = 0; i1 < N; i1++) {
+            for (int j1 = 0; j1 < N; j1++) {
+                tab[i1][j1] = true;
+                for (int i2 = 0; i2 < N; i2++) {
+                    for (int j2 = 0; j2 < N; j2++) {
+                        if (!tab[i2][j2] && !szach(i2, j2)) {
+                            tab[i2][j2] = true;
+                            wypisz();
+                            tab[i2][j2] = false;
+                            counter++;
+                        }
+                    }
+                    
+                }
+                tab[i1][j1] = false;
+            }
+        }
+        
+    } else {
+        hetman(0);
+    }
+    cout << "Znaleziono " << counter << " rozwiazan";
+}
