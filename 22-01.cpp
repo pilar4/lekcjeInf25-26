@@ -268,3 +268,151 @@ int main(){
 
    return 0;
 }
+
+
+zad 5
+
+#include <iostream>
+#include <fstream>
+#include <queue>
+#include <iomanip>
+
+using namespace std;
+
+const int n = 20;
+
+struct pole
+{
+    int x;          // -1 ściana, 0 wolne, >0 BFS, -2 droga
+    bool D, G, L, P;
+};
+
+void wczytajlab(pole lab[][n])
+{
+    ifstream we("labirynt-logiczny.txt");
+    char c;
+
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            we >> lab[i][j].G >> lab[i][j].D
+               >> lab[i][j].L >> lab[i][j].P;
+
+            lab[i][j].x = 0;
+        }
+    }
+    we.close();
+}
+
+void wypiszlab(pole lab[][n])
+{
+    cout << "   ";
+    for (int j = 0; j < n; j++)
+        cout << setw(3) << j;
+    cout << endl;
+
+    for (int i = 0; i < n; i++)
+    {
+        cout << setw(3) << i;
+        for (int j = 0; j < n; j++)
+        {
+            if (lab[i][j].x == -1)
+                cout << "  X";
+            else if (lab[i][j].x == -2)
+                cout << "  D";
+            else
+                cout << "   ";
+        }
+        cout << endl;
+    }
+}
+
+bool droga(pole lab[][n], int ws, int ks, int &wk, int &kk)
+{
+    queue<pair<int,int>> q;
+    q.push({ws, ks});
+    lab[ws][ks].x = 1;
+
+    while (!q.empty())
+    {
+        int w = q.front().first;
+        int k = q.front().second;
+        q.pop();
+
+        if (w == 0 || w == n-1 || k == 0 || k == n-1)
+        {
+            wk = w;
+            kk = k;
+            return true;
+        }
+
+        if (lab[w][k].G && lab[w-1][k].x == 0)
+        {
+            lab[w-1][k].x = lab[w][k].x + 1;
+            q.push({w-1, k});
+        }
+
+        if (lab[w][k].D && lab[w+1][k].x == 0)
+        {
+            lab[w+1][k].x = lab[w][k].x + 1;
+            q.push({w+1, k});
+        }
+
+        if (lab[w][k].L && lab[w][k-1].x == 0)
+        {
+            lab[w][k-1].x = lab[w][k].x + 1;
+            q.push({w, k-1});
+        }
+
+        if (lab[w][k].P && lab[w][k+1].x == 0)
+        {
+            lab[w][k+1].x = lab[w][k].x + 1;
+            q.push({w, k+1});
+        }
+    }
+    return false;
+}
+
+void oznaczdroge(pole lab[][n], int w, int k)
+{
+    int x = lab[w][k].x;
+    lab[w][k].x = -2;
+
+    while (x > 1)
+    {
+        x--;
+
+        if (w > 0 && lab[w-1][k].x == x) w--;
+        else if (w < n-1 && lab[w+1][k].x == x) w++;
+        else if (k > 0 && lab[w][k-1].x == x) k--;
+        else k++;
+
+        lab[w][k].x = -2;
+    }
+}
+
+int main()
+{
+    pole lab[n][n];
+    int ws, ks, wk, kk;
+
+    wczytajlab(lab);
+    wypiszlab(lab);
+
+    cout << "WSPOLRZEDNE POLA STARTOWEGO:\n";
+    cout << "w = "; cin >> ws;
+    cout << "k = "; cin >> ks;
+
+    if (droga(lab, ws, ks, wk, kk))
+    {
+        oznaczdroge(lab, wk, kk);
+        wypiszlab(lab);
+    }
+    else
+    {
+        cout << "BRAK DROGI!!!";
+    }
+
+    return 0;
+}
