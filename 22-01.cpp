@@ -1,3 +1,36 @@
+zad 1 (kiepsko ale dziala)
+#include <iostream>
+
+using namespace std;
+
+int main(){
+    int ludz;cin>>ludz;
+    int kol=0;
+    int maxkol=0;
+    int maxkolfinal=0;
+
+    while(ludz!=0){
+        if(ludz!=-1){
+            maxkol++;
+            if(maxkol>maxkolfinal){
+                maxkolfinal=maxkol;
+            }
+        }
+        else{
+            maxkol=0;
+        }
+        if(ludz==1){
+            kol++;
+        }
+        else{
+            kol--;
+        }
+        cin>>ludz;
+    }
+    cout<<maxkolfinal;
+    return 0;
+}
+
 zad 2
 
 //NIE ZAWSZE TRASA BEDZIE NAJKROTSZA
