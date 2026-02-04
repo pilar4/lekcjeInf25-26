@@ -253,4 +253,97 @@ int main()
 
 Ćwiczenie 8
 
+#include <iostream>
+#include <vector>
+#include <fstream>
+
+using namespace std;
+
+struct krawedz{
+    int w2;
+    int waga;
+};
+
+typedef vector<vector<krawedz> > tgraf;
+
+
+void wczytaj(tgraf &Graf){
+    int n,m,w1;
+    krawedz kraw;
+    ifstream we("graf_1.txt");
+    we>>n>>m;
+    Graf.resize(n);
+    for(int i=0;i<m;i++){
+        we>>w1>>kraw.w2>>kraw.waga;
+        Graf[w1].push_back(kraw);
+    }
+    we.close();
+}
+
+void WypiszDroge(int pocz, int kon, const vector<int> &Poprz) {
+    if (kon == pocz) {
+        cout << pocz << " ";
+        return;
+    }
+    if (Poprz[kon] == -1) {
+        cout << "Brak sciezki!";
+        return;
+    }
+    WypiszDroge(pocz, Poprz[kon], Poprz);
+    cout << kon << " ";
+}
+
+void Djikstra(const tgraf &Graf, int pocz, vector<int> &Koszt, vector<int> &Poprz){
+    int n = Graf.size();
+    vector<bool> Odwiedzone(n, false);
+    
+    Koszt[pocz] = 0;
+    
+    for(int i = 0; i < n; i++){
+        int w1 = -1;
+        
+        // Szukamy nieodwiedzonego wierzchołka o najmniejszym koszcie
+        for(int j = 0; j < n; j++){
+            if(!Odwiedzone[j] && (w1 == -1 || Koszt[j] < Koszt[w1])){
+                w1 = j;
+            }
+        }
+        
+        // Jeśli nie ma już dostępnych wierzchołków (lub są nieosiągalne), przerywamy
+        if (w1 == -1 || Koszt[w1] == INT_MAX) break;
+        
+        Odwiedzone[w1] = true;
+        
+        // Relaksacja krawędzi
+        for(int j = 0; j < Graf[w1].size(); j++){
+            krawedz kraw = Graf[w1][j];
+            if(Koszt[w1] != INT_MAX && Koszt[w1] + kraw.waga < Koszt[kraw.w2]){
+                Koszt[kraw.w2] = Koszt[w1] + kraw.waga;
+                Poprz[kraw.w2] = w1; // Zapisujemy skąd przyszliśmy
+            }
+        }
+    }
+}
+
+int main()
+{
+    tgraf Graf;
+    wczytaj(Graf);
+
+    vector<int> koszt;
+    koszt.resize(Graf.size(),1000);
+    vector<int> Poprz;
+    Poprz.resize(Graf.size(),-1);
+
+    int pocz, kon;
+    cout<<"Numer pocz wierz: "; cin>>pocz;
+    cout<<"Numer kon wierz: "; cin>>kon;
+
+    Djikstra(Graf,pocz,koszt,Poprz);
+    cout<<"koszt dojscia: "<<koszt[kon]<<endl<<" droga: ";
+    WypiszDroge(pocz,kon,Poprz);
+
+    return 0;
+}
+
 
