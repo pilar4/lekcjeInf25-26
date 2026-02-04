@@ -36,7 +36,38 @@ int main()
 
 
 Ćwiczenie 4
+#include <iostream>
+#include <vector>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+const int N = 10;
+int tab[N][N];
+
+int main()
+{
+    srand(time(NULL));
+    for(int i=0; i<N; i++){
+        for(int j=0;j<i;j++){
+            tab[i][j]=rand()%100;
+        }
+    }
+
+    cout<<"elementy: "<<endl;
+    for(int i=0; i<N; i++)
+    {
+        for(int j=0;j<i;j++){
+            cout<<tab[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+
+    return 0;
+}
+
+
 Ćwiczenie 5
+
 Ćwiczenie 6
 Ćwiczenie 7
 Ćwiczenie 8
