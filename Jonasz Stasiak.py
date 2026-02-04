@@ -1,1 +1,0 @@
-Jonasz smierdzi
