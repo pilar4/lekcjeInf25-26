@@ -1,52 +1,28 @@
-#include <iostream>
-#include <list>
-#include <vector>
-#include <string>
+void BFS(int w1, tgraf Graf)
+{
+    int w2;
+    vector<bool> Odwiedzone;
+    Odwiedzone.resize(Graf.size(), false);
+    queue<int> wierzch;
 
-using namespace std;
+    wierzch.push(w1);
+    Odwiedzone[w1] = true;
 
-void bucketSort(list<string>& words) {
-    // znajdź maksymalną długość słowa
-    size_t maxLen = 0;
-    for (const auto& w : words) {
-        if (w.length() > maxLen)
-            maxLen = w.length();
-    }
+    while (!wierzch.empty())
+    {
+        w1 = wierzch.front();
+        wierzch.pop();
 
-    // sortowanie od ostatniego znaku do pierwszego
-    for (int pos = maxLen - 1; pos >= 0; pos--) {
-        vector<list<string>> buckets(27); 
-        // 0 -> brak znaku (krótsze słowa)
-        // 1-26 -> litery 'a' - 'z'
+        cout << "Odwiedzony wierzcholek: " << w1 << endl;
 
-        for (const auto& word : words) {
-            if (pos < word.length()) {
-                int index = word[pos] - 'a' + 1;
-                buckets[index].push_back(word);
-            } else {
-                buckets[0].push_back(word);
+        for (int i = 0; i < Graf[w1].size(); i++)
+        {
+            w2 = Graf[w1][i];
+            if (!Odwiedzone[w2])
+            {
+                wierzch.push(w2);
+                Odwiedzone[w2] = true;
             }
         }
-
-        // scal kubełki z powrotem do listy
-        words.clear();
-        for (auto& bucket : buckets) {
-            words.splice(words.end(), bucket);
-        }
     }
-}
-
-int main() {
-    list<string> words = {
-        "krzeslo", "krzak", "krem", "kres",
-        "kraina", "kret", "kraksa", "kredyt"
-    };
-
-    bucketSort(words);
-
-    for (const auto& w : words) {
-        cout << w << endl;
-    }
-
-    return 0;
 }
