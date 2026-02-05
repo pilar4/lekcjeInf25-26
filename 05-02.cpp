@@ -188,3 +188,60 @@ int main()
 4 5
     */
 }
+zad 6
+#include <iostream>
+#include <vector>
+#include <fstream>
+#include <stack>
+
+using namespace std;
+
+typedef vector<vector<int> > tgraf;
+
+void czytaj(tgraf &Graf){
+    int n, m, w1, w2;
+    ifstream we("graf_2.txt");
+    we>>n>>m;
+    Graf.resize(n);
+    for(int i=0;i<m;i++){
+        we>>w1>>w2;
+        Graf[w1].push_back(w2);
+    }
+    we.close();
+}
+
+void DFS(int start, tgraf &Graf, vector<bool> &Odwiedzone){
+    stack<int> s;
+    s.push(start);
+
+    while(!s.empty()){
+        int w1 = s.top();
+        s.pop();
+
+        if(Odwiedzone[w1]) continue;
+
+        cout<<w1<<endl;
+        Odwiedzone[w1]=true;
+
+        for(int i=Graf[w1].size()-1;i>=0;i--){
+            int w2=Graf[w1][i];
+            if(!Odwiedzone[w2]){
+                s.push(w2);
+            }
+        }
+    }
+}
+
+int main()
+{
+    tgraf Graf;
+    czytaj(Graf);
+
+    vector<bool> Odwiedzone;
+    Odwiedzone.resize(Graf.size(),false);
+
+    int w1 = 0;
+
+    DFS(w1,Graf,Odwiedzone);
+    return 0;
+}
