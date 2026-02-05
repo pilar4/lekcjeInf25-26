@@ -56,32 +56,28 @@ using namespace std;
 typedef vector<vector<int> > tgraf;
 
 int czytaj(tgraf &Graf){
-    int n, m, w1, w2;
-    ifstream we("graf_2.txt");
-    we>>n>>m;
-    Graf.resize(n);
-    for(int i=0;i<m;i++){
-        we>>w1>>w2;
-        Graf[w1].push_back(w2);
-    }
-    we.close();
-
-    return n;
+   int n, m, w1, w2;
+   ifstream we("graf_2.txt");
+   we>>n>>m;
+   Graf.resize(n);
+   for(int i=0;i<m;i++){
+       we>>w1>>w2;
+       Graf[w1].push_back(w2);
+   }
+   we.close();
+   return n;
 }
-
 stack<int> s;
-
 void DFS(int w1, tgraf &Graf, vector<bool> &Odwiedzone){
-    s.push(w1);
-    Odwiedzone[w1]=true;
+   s.push(w1);
+   Odwiedzone[w1]=true;
 
-    for(int i=0;i<Graf[w1].size();i++){
-        int w2=Graf[w1][i];
-        if(!Odwiedzone[w2]){
-            DFS(w2,Graf,Odwiedzone);
-        }
-    }
-
+   for(int i=0;i<Graf[w1].size();i++){
+       int w2=Graf[w1][i];
+       if(!Odwiedzone[w2]){
+           DFS(w2,Graf,Odwiedzone);
+       }
+   }
 }
 
 int main()
@@ -92,17 +88,21 @@ int main()
     vector<bool> Odwiedzone;
     Odwiedzone.resize(Graf.size(),false);
 
-    int w1 = 0;
+    int w1; cin>>w1;
+    int k; cin>>k;
+
+    
 
 
-    DFS(w1, Graf, Odwiedzone);
+    DFS(w1,Graf,Odwiedzone);
+
     for(int i=0;i<num;i++){
-        if(s.top()==num-1){
+        if(s.top()==k){
             cout<<"Istnieje droga ";
             return 0;
         }
-        s.pop();
     }
+
     cout<<"Nie istnieje droga ";
     return 0;
 }
