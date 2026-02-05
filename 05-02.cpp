@@ -107,6 +107,72 @@ int main()
     return 0;
 }
 
+zad 3
+#include <iostream>
+#include <vector>
+#include <fstream>
+
+using namespace std;
+
+typedef vector<vector<int> > tgraf;
+
+void czytaj(tgraf &Graf){
+   int n, m, w1, w2;
+   ifstream we("graf_2.txt");
+   we>>n>>m;
+   Graf.resize(n);
+   for(int i=0;i<m;i++){
+       we>>w1>>w2;
+       Graf[w1].push_back(w2);
+   }
+   we.close();
+}
+
+bool DFS(int w1, tgraf &Graf, vector<bool> &Odwiedzone,vector<bool> &nastosie){
+   Odwiedzone[w1]=true;
+   nastosie[w1]=true;
+
+   for(int i=0;i<Graf[w1].size();i++){
+    int w2=Graf[w1][i];
+
+    if(nastosie[w2]){
+        return true;
+    }
+
+    if(!Odwiedzone[w2]){
+        if(DFS(w2,Graf,Odwiedzone,nastosie)){
+            return true;
+        }
+    }
+   }
+   nastosie[w1]=false;
+    return false;
+}
+int main()
+{
+   tgraf Graf;
+   czytaj(Graf);
+
+   vector<bool> nastosie;
+   nastosie.resize(Graf.size(),false);
+   vector<bool> Odwiedzone;
+   Odwiedzone.resize(Graf.size(),false);
+
+   bool cykl=false;
+
+   int i;cin>>i;
+
+    if(!Odwiedzone[i]){
+        if(DFS(i,Graf,Odwiedzone,nastosie)){
+            cout<<"jest cykl";
+            return 0;
+        }
+    }
+
+    cout<<"ni ma cykla";
+   return 0;
+}
+
 zad 4
 #include <iostream>
 #include <vector>
