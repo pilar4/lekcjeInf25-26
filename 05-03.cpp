@@ -116,3 +116,29 @@ int main()
     cout<<"Rozwiniecie binarne: "<<s;
     return 0;
 }
+
+#include <iostream>
+using namespace std;
+
+string toBinary(int n, bool f)
+{
+    if(n == 0) return 0;
+    string s = "";
+    while(n > 0)
+    {
+        s = char('0' + (n % 2)) + s;
+        n /= 2;
+    }
+    while(s.size()<8 && f){
+        s='0'+s;
+    }
+    return s;
+}
+
+int main()
+{
+    int d, u; cin>>d; cin>>u;
+    if(d>253 || u>253 || d<0 || u<0) return 0;
+    cout<<toBinary(d, 1)<<","<<toBinary(u, 0)<<endl;
+
+}
