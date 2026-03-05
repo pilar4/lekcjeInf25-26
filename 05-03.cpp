@@ -144,3 +144,56 @@ int main()
     cout<<toBinary(d, 1)<<","<<toBinary(u, 0)<<endl;
 
 }
+
+zad 8
+#include <iostream>
+#include <string>
+#include <bitset>
+
+using namespace std;
+
+int main() {
+    string s1, s2;
+    
+    cout << "Podaj pierwsza liczbe (16 znakow 0/1): ";
+    cin >> s1;
+    cout << "Podaj druga liczbe (16 znakow 0/1): ";
+    cin >> s2;
+
+    int e1 = stoi(s1.substr(0, 8), nullptr, 2);
+    int m1 = stoi(s1.substr(8, 8), nullptr, 2);
+
+    int e2 = stoi(s2.substr(0, 8), nullptr, 2);
+    int m2 = stoi(s2.substr(8, 8), nullptr, 2);
+
+    if (e1 > 0) { m1 = m1 + 256; }
+    if (e2 > 0) { m2 = m2 + 256; }
+
+    while (e1 < e2) {
+        m1 = m1 / 2;
+        e1++;
+    }
+    while (e2 < e1) {
+        m2 = m2 / 2;
+        e2++;
+    }
+
+    int m_sum = m1 + m2;
+    int e_sum = e1; 
+
+    if (m_sum >= 512) {
+        m_sum = m_sum / 2;
+        e_sum++;
+    }
+
+    if (m_sum >= 256) {
+        m_sum = m_sum - 256;
+    }
+
+    string wy_cecha = bitset<8>(e_sum).to_string();
+    string wy_mantysa = bitset<8>(m_sum).to_string();
+
+    cout << "Wynik dodawania: " << wy_cecha << wy_mantysa << endl;
+
+    return 0;
+}
