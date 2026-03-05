@@ -4,6 +4,8 @@ zad 1
 zad 2
 1/3 dzies = 0,1 w troj
 
+zad 3
+123,375 dziesiętny = bi-01111011,01100000
 
 zad 5
 #include <iostream>
