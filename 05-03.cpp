@@ -117,6 +117,8 @@ int main()
     return 0;
 }
 
+zad 7
+
 #include <iostream>
 using namespace std;
 
