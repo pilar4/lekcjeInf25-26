@@ -29,3 +29,37 @@ int main()
     cout<<"Rozwiniecie binarne: "<<s;
     return 0;
 }
+
+
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+double silnia(int x){
+	double xx=1;
+	for(int i=1; i<x+1; i++){
+		xx*=i;
+	}
+	return xx;
+}
+
+int main(){
+	
+	float sin=1;
+	bool flaga = 1;
+	int x=3;
+	while(sin/10000==0){
+		if(flaga){
+			sin -= 1/silnia(x);
+		}
+		else{
+			sin += 1/silnia(x);
+		}
+		flaga = !flaga;
+		x = x+2;
+	}
+	cout<<setprecision(4)<<fixed<<sin<<endl;
+
+    return 0;
+}
+
