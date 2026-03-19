@@ -84,3 +84,32 @@ int main(){
 }
 cw 3
 
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() {
+    long long podstawa;
+    string wykladnik_bin;
+
+    cout << "Podaj podstawe potegi: ";
+    cin >> podstawa;
+    
+    cout << "Podaj wykladnik w postaci binarnej (np. 101): ";
+    cin >> wykladnik_bin;
+
+    long long wynik = 1;
+
+    for (int i = 0; i < wykladnik_bin.length(); i++) {
+        wynik = wynik * wynik;
+        
+        if (wykladnik_bin[i] == '1') {
+            wynik = wynik * podstawa;
+        }
+    }
+
+    cout << "Wartosc potegi wynosi: " << wynik << endl;
+
+    return 0;
+}
