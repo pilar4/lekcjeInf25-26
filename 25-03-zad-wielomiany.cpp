@@ -93,3 +93,48 @@ int main(){
 
     cout << horner(a, x, 0) << endl;
 }
+
+zad 5
+
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+void czytaj(vector<float> &A){
+    int n;
+    cout<<"stopien wielomianu: ";
+    cin>>n;
+    A.resize(n+1);
+    for(int i=n;i>=0;i--){
+        cout<<"a"<<i<<" = ";
+        cin>>A[i];
+    }
+}
+
+vector<float> W(const vector<float>& A, const vector<float>& B) {
+    int n = A.size();
+    int m = B.size();
+
+    vector<float> wynik(n + m - 1, 0);
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            wynik[i + j] += A[i] * B[j];
+        }
+    }
+    return wynik;
+}
+
+int main(){
+    vector<float> a;
+    vector<float> b;
+    czytaj(a);
+    czytaj(b);
+
+    vector<float> wynik = W(a, b);
+
+    for (int i = 0; i < wynik.size(); i++) {
+        cout << "x^" << i << ": " << wynik[i] << endl;
+    }
+}
