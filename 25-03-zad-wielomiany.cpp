@@ -51,6 +51,59 @@ int main()
     }
 }
 
+zad2
+#include <iostream>
+#include <vector>
+#include <fstream>
+
+using namespace std;
+
+void czytaj_z_pliku(vector<float> &a, const string &nazwa)
+{
+    ifstream plik(nazwa);
+
+    int n;
+    plik >> n;
+
+    a.resize(n + 1);
+
+    for (int i = 0; i <= n; i++)
+    {
+        plik >> a[i];
+    }
+
+    plik.close();
+}
+
+float horner(vector<float> a, float x)
+{
+    int n = a.size() - 1;
+    float wynik = a[0];
+
+    for (int i = 1; i <= n; i++)
+    {
+        wynik = wynik * x + a[i];
+    }
+
+    return wynik;
+}
+
+int main()
+{
+    vector<float> a;
+    string nazwa_pliku = "wielomian.txt";
+
+    czytaj_z_pliku(a, nazwa_pliku);
+
+    float x;
+    cout << "Podaj x: ";
+    cin >> x;
+
+    cout << "W(" << x << ") = " << horner(a, x) << endl;
+
+    return 0;
+}
+
 zad4
 #include <iostream>
 #include <vector>
