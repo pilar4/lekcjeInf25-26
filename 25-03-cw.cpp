@@ -107,6 +107,35 @@ int main()
     return 0;
 }
 
+cw3
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+double pierwiastek(double a)
+{
+    double x = a;
+    const double eps = 0.000001;
+
+    while (fabs(x * x - a) > eps)
+    {
+        x = 0.5 * (x + a / x);
+    }
+
+    return x;
+}
+
+int main()
+{
+    double a;
+    cout << "Podaj liczbe dodatnia: ";
+    cin >> a;
+
+    cout << "Pierwiastek = " << pierwiastek(a) << endl;
+
+    return 0;
+}
+
 cw5
 #include <iostream>
 #include <vector>
