@@ -104,6 +104,52 @@ int main()
     return 0;
 }
 
+zad3
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+void czytaj(vector<int> &a, int &podstawa)
+{
+    int n;
+    cout << "Podaj podstawe systemu (2-9): ";
+    cin >> podstawa;
+
+    cout << "Podaj liczbe cyfr: ";
+    cin >> n;
+
+    a.resize(n);
+
+    for(int i = 0; i < n; i++)
+    {
+        cout << "cyfra " << i << " = ";
+        cin >> a[i];
+    }
+}
+
+int horner(vector<int> a, int podstawa)
+{
+    int wynik = a[0];
+
+    for(int i = 1; i < a.size(); i++)
+    {
+        wynik = wynik * podstawa + a[i];
+    }
+
+    return wynik;
+}
+
+int main()
+{
+    vector<int> a;
+    int podstawa;
+
+    czytaj(a, podstawa);
+
+    cout << "Wartosc dziesietna = " << horner(a, podstawa) << endl;
+}
+
 zad4
 #include <iostream>
 #include <vector>
