@@ -1,3 +1,56 @@
+zad1
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+void czytaj(vector<float> &a, vector<float> &sum, int &tmp)
+{
+   int n;
+   float x;
+   cout << "stopien wielomianu: ";
+   cin >> n;
+   a.resize(n+1,0.0f);
+   if(n>tmp)
+   {
+        sum.resize(n+1,0.0f);
+        tmp = n;
+   }
+   for(int i = n;i>=0;i--)
+   {
+       cout << "a" << i << " = ";
+       cin >> x;
+       a[i]=x;
+       sum[i] += x;
+   }
+}
+
+
+
+int main()
+{
+    int tmp=0;
+    vector<float> a;
+    vector<float> b;
+    vector<float> sum;
+    cout << "wielomian 1\n___________ \n";
+    czytaj(a,sum,tmp);
+    cout << "wielomian 2\n___________ \n";
+    czytaj(b,sum,tmp);
+    
+    for(int i=sum.size()-1;i>=0;i--)
+    {
+        if(i>0)
+        {
+            cout << sum[i] << "*x^" << i << " + ";
+        }
+        else
+        {
+            cout << sum[i] << "*x^" << i;
+        }
+    }
+}
+
 zad4
 #include <iostream>
 #include <vector>
