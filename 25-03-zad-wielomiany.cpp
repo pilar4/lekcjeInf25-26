@@ -237,3 +237,43 @@ int main(){
         cout << "x^" << i << ": " << wynik[i] << endl;
     }
 }
+
+zad7
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+using namespace std;
+
+double sinusinfection(double x)
+{
+    const int n = 6;
+    double silnia[2*n];
+    
+    silnia[0] = 1;
+    for(int i = 1; i < 2*n; i++)
+    {
+        silnia[i] = silnia[i-1] * i;
+    }
+
+    double wynik = 0;
+
+    for(int i = n-1; i >= 0; i--)
+    {
+        int wyk = 2*i;
+        double wsp = ((i % 2 == 0) ? 1 : -1) / silnia[wyk];
+        wynik = wynik * x * x + wsp;
+    }
+
+    return wynik;
+}
+
+int main()
+{
+    double x;
+    cin >> x;
+
+    cout << fixed << setprecision(4);
+    cout << sinusinfection(x) << endl;
+
+    return 0;
+}
