@@ -141,30 +141,39 @@ cw5
 #include <vector>
 using namespace std;
 
+
+
+
 float f(float x){
-    return 1.0/6*x*x*x-x*x+0.5*x+5.0/3.0;
+  return 1.0/6*x*x*x-x*x+0.5*x+5.0/3.0;
 }
+
+
+
 
 int main()
 {
-    float a, b, x, dx, s=0;
-    int n;
-    cout<<"A = "; cin>>a;
-    cout<<"B = "; cin>>b;
-    cout<<"N = "; cin>>n;
-    dx=(b-a)/n;
-    x=a;
-    for(int i=1;i<=n;i++){
-        x=x+dx;
-        s=s+dx*f(x);
-    }
-    cout<<"Pole obszaru "<<s;
-    cout<<endl;
-    return 0;
+  float a, b, x, dx, s=0;
+  int n;
+  cout<<"A = "; cin>>a;
+  cout<<"B = "; cin>>b;
+  cout<<"N = "; cin>>n;
+  dx=(b-a)/n;
+  x=a;
+  for(int i=1;i<=n;i++){
+      x=x+dx;
+      s=s+dx*f(x);
+  }
+  cout<<"Pole obszaru "<<s;
+  cout<<endl;
+  return 0;
 }
 
 
-cw6
+
+
+
+cw 6
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -173,7 +182,7 @@ using namespace std;
 
 
 float f(float x){
-  return 1.0/6*x*x*x-x*x+0.5*x+5.0/3.0;
+  return 1.0/6*x*x*x-x*x+0.5*x+5.0/0.3;
 }
 
 
@@ -199,3 +208,120 @@ int main()
   cout<<endl;
   return 0;
 }
+
+
+
+
+cw 7
+a)
+#include <iostream>
+#include <vector>
+#include <cmath>
+using namespace std;
+
+
+
+
+
+
+
+
+float f(float x){
+ return 1.0/6*x*x*x-x*x+0.5*x+5.0/3.0;
+}
+
+
+
+
+
+
+double c(double x){
+   double r = 1.0;
+   return sqrt(r*r - x*x);
+}
+
+
+
+
+
+
+
+
+int main()
+{
+ float a, b, x, dx, s=0, f1, f2;
+ int n;
+ a=0;
+ b=1;
+ n=1000;
+ dx=(b-a)/n;
+ x=a;
+ f1=c(x);
+ for(int i=1;i<=n;i++){
+     x=x+dx;
+     s=s+dx*c(x);
+ }
+ cout<<"Pole obszaru "<<s*4;
+ cout<<endl;
+ return 0;
+}
+
+
+
+b)
+#include <iostream>
+#include <vector>
+#include <cmath>
+using namespace std;
+
+
+
+
+
+
+
+
+float f(float x){
+ return 1.0/6*x*x*x-x*x+0.5*x+5.0/3.0;
+}
+
+
+
+
+
+
+double c(double x){
+   double r = 1.0;
+   return sqrt(r*r - x*x);
+}
+
+
+
+
+
+
+
+
+int main()
+{
+ float a, b, x, dx, s=0, f1, f2;
+ int n;
+ a=0;
+ b=1;
+ n=1000;
+ dx=(b-a)/n;
+ x=a;
+ f1=c(x);
+ for(int i=1;i<=n;i++){
+     x=x+dx;
+     f2=c(x);
+     s=s+dx*(f1+f2)/2;
+     f1=f2;
+ }
+ cout<<"Pole obszaru "<<s*4;
+ cout<<endl;
+ return 0;
+}
+
+
+
