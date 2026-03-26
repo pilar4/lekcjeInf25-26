@@ -279,31 +279,3 @@ int main()
 }
 
 
-cw 8
-
-#include <iostream>
-#include <cstdlib>
-#include <ctime>
-
-using namespace std;
-
-int main() { int n, n0 = 0; float x, y;
-
-cout << "Liczba punktow: ";
-cin >> n;
-
-srand(time(NULL));
-
-for (int i = 0; i < n; i++)
-{
-    x = -1 + 2 * (float(rand()) / RAND_MAX);
-    y = -1 + 2 * (float(rand()) / RAND_MAX);
-
-    if (x * x + y * y <= 1)
-        n0++;
-}
-
-cout << "Przyblizenie pi: " << 4 * (float(n0) / n) << endl;
-
-return 0;
-}
