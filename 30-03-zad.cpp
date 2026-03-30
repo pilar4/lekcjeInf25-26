@@ -87,6 +87,65 @@ int main() {
     return 0;
 }
 
+Zad 3
+#include <iostream>
+#include <cmath> 
+using namespace std;
+
+float f(float x) {
+  return 1.0/6*x*x*x - x*x + 0.5*x + 5.0/3.0;
+}
+
+int main() {
+  float a, b, x, dx, s = 0;
+  int n;
+  cout << "A = "; cin >> a;
+  cout << "B = "; cin >> b;
+  cout << "N = "; cin >> n;
+  
+  dx = (b - a) / n;
+  x = a;
+  
+  for(int i = 1; i <= n; i++) {
+      x = x + dx;
+      s = s + dx * abs(f(x)); 
+  }
+  
+  cout << "Pole obszaru " << s << endl;
+  return 0;
+}
+#include <iostream>
+#include <cmath> // Dodana biblioteka matematyczna dla funkcji abs()
+using namespace std;
+
+float f(float x) {
+  // Poprawiłem literówkę na końcu (było 5.0/0.3, jest 5.0/3.0)
+  return 1.0/6*x*x*x - x*x + 0.5*x + 5.0/3.0; 
+}
+
+int main() {
+  float a, b, x, dx, s = 0, f1, f2;
+  int n;
+  cout << "A = "; cin >> a;
+  cout << "B = "; cin >> b;
+  cout << "N = "; cin >> n;
+  
+  dx = (b - a) / n;
+  x = a;
+  f1 = f(x);
+  
+  for(int i = 1; i <= n; i++) {
+      x = x + dx;
+      f2 = f(x);
+      // Zmiana tutaj: bierzemy wartości bezwzględne z obu podstaw trapezu (f1 i f2)
+      s = s + dx * (abs(f1) + abs(f2)) / 2; 
+      f1 = f2;
+  }
+  
+  cout << "Pole obszaru " << s << endl;
+  return 0;
+}
+
 zad4
 P ≈ 2.98
 
