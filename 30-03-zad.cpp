@@ -88,6 +88,7 @@ int main() {
 }
 
 Zad 3
+(prostokat)
 #include <iostream>
 #include <cmath> 
 using namespace std;
@@ -114,6 +115,8 @@ int main() {
   cout << "Pole obszaru " << s << endl;
   return 0;
 }
+
+(trapez)
 #include <iostream>
 #include <cmath> // Dodana biblioteka matematyczna dla funkcji abs()
 using namespace std;
