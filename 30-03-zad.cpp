@@ -152,6 +152,49 @@ int main() {
 zad4
 P ≈ 2.98
 
+zad5
+    #include <iostream>
+#include <ctime>
+#include <cstdlib>
+#include <cmath>
+#include <iomanip>
+#include <algorithm>
+#include <fstream>
+#include <stack>
+#include <queue>
+#include <list>
+#include <vector>
+
+using namespace std;
+
+
+double sqrtNewton(double x, double guess, double epsilon) {
+
+    if (fabs(guess * guess - x) < epsilon) {
+        return guess;
+    }
+
+ 
+    double newGuess = (guess + x / guess) / 2;
+
+    return sqrtNewton(x, newGuess, epsilon);
+}
+
+int main() {
+    double liczba;
+    cout << "Podaj liczbe: ";
+    cin >> liczba;
+
+    double epsilon = 0.00001;
+    double start = liczba / 2; 
+
+    double wynik = sqrtNewton(liczba, start, epsilon);
+
+    cout << "Przyblizony pierwiastek: " << wynik << endl;
+
+    return 0;
+}
+
 zad7
     #include <iostream>
 using namespace std;
