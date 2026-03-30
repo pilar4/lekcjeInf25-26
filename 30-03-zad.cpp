@@ -149,5 +149,74 @@ int main() {
 zad4
 P ≈ 2.98
 
+zad7
+    #include <iostream>
+using namespace std;
+
+double horner(double wsp[], int n, double x)
+{
+    double wynik = wsp[0];
+
+    for (int i = 1; i <= n; i++)
+    {
+        wynik = wynik * x + wsp[i];
+    }
+
+    return wynik;
+}
+
+int main()
+{
+    int n;
+    cout << "Podaj stopien wielomianu: ";
+    cin >> n;
+
+    double wsp[n + 1];
+
+    cout << "Podaj wspolczynniki od najwyzszej potegi:\n";
+    for (int i = 0; i <= n; i++)
+    {
+        cout << "a[" << i << "] = ";
+        cin >> wsp[i];
+    }
+
+    double a, b;
+    cout << "Podaj przedzial [a, b]: ";
+    cin >> a >> b;
+
+    double eps = 0.0001;
+
+    if (horner(wsp, n, a) * horner(wsp, n, b) > 0)
+    {
+        cout << "Brak miejsca zerowego w tym przedziale.\n";
+        return 0;
+    }
+
+    double s;
+
+    while ((b - a) > eps)
+    {
+        s = (a + b) / 2.0;
+
+        if (horner(wsp, n, s) == 0)
+        {
+            break;
+        }
+
+        if (horner(wsp, n, a) * horner(wsp, n, s) < 0)
+        {
+            b = s;
+        }
+        else
+        {
+            a = s;
+        }
+    }
+
+    cout << "Przyblizone miejsce zerowe: " << (a + b) / 2.0 << endl;
+
+    return 0;
+}
+
 zad9
 P ≈ 12.57
