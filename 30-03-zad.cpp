@@ -150,7 +150,7 @@ int main() {
 }
 
 zad4
-P ≈ 2.98
+P ≈ 3.14159265358979323
 
 zad5
     #include <iostream>
@@ -297,7 +297,7 @@ int main()
 
 
 zad9
-P ≈ 12.57
+P ≈ 24.1327 //mimon cooked this
 
 Zad 10 (wkleicc to do exela 1 komorki)
 Krok	Kąt (radiany)	X	Y
