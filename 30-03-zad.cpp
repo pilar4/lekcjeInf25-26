@@ -298,3 +298,17 @@ int main()
 
 zad9
 P ≈ 12.57
+
+Zad 10 (wkleicc to do exela 1 komorki)
+Krok	Kąt (radiany)	X	Y
+0		0	0
+1	=LOS()*2*PI()	=C2+COS(B3)	=D2+SIN(B3)
+2	=LOS()*2*PI()	=C3+COS(B4)	=D3+SIN(B4)
+3	=LOS()*2*PI()	=C4+COS(B5)	=D4+SIN(B5)
+4	=LOS()*2*PI()	=C5+COS(B6)	=D5+SIN(B6)
+5	=LOS()*2*PI()	=C6+COS(B7)	=D6+SIN(B7)
+6	=LOS()*2*PI()	=C7+COS(B8)	=D7+SIN(B8)
+7	=LOS()*2*PI()	=C8+COS(B9)	=D8+SIN(B9)
+8	=LOS()*2*PI()	=C9+COS(B10)	=D9+SIN(B10)
+9	=LOS()*2*PI()	=C10+COS(B11)	=D10+SIN(B11)
+10	=LOS()*2*PI()	=C11+COS(B12)	=D11+SIN(B12)
