@@ -312,3 +312,7 @@ Krok	Kąt (radiany)	X	Y
 8	=LOS()*2*PI()	=C9+COS(B10)	=D9+SIN(B10)
 9	=LOS()*2*PI()	=C10+COS(B11)	=D10+SIN(B11)
 10	=LOS()*2*PI()	=C11+COS(B12)	=D11+SIN(B12)
+
+zad 11
+
+P ≈ 0.67
