@@ -263,6 +263,38 @@ int main()
 
     return 0;
 }
+zad 8
+#include <iostream>
+using namespace std;
+
+double times_three(double n){
+    return n*n*n;
+}
+
+int main()
+{
+    int n;
+    cin >> n;
+
+    double nbli;
+    for(double i=0;i<n;i = i+1){
+        if(times_three(i)<n)
+            nbli=i;
+        else if (times_three(i)==n){
+            cout<<"wynik pierwiastka 3 stopnia to: "<<i<<endl;
+            return 0;
+        }
+    }
+    double i=nbli;
+    while(times_three(i)<n){
+        i = i + 0.0001;
+    }
+
+    cout<<"wynik pierwiastka 3 stopnia to: "<<i<<endl;
+
+    return 0;
+}
+
 
 zad9
 P ≈ 12.57
