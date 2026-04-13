@@ -1,35 +1,18 @@
-#include <iostream>
-#include <cmath>
+bool PrzecOdcinki(punkt A, punkt B, punkt C, punkt D)
+{
+    float w1, w2, w3, w4;
 
-using namespace std;
+    w1 = det(A.x, A.y, B.x, B.y, C.x, C.y);
+    w2 = det(A.x, A.y, B.x, B.y, D.x, D.y);
+    w3 = det(C.x, C.y, D.x, D.y, A.x, A.y);
+    w4 = det(C.x, C.y, D.x, D.y, B.x, B.y);
 
-double sqrt_bisekcja(double c, double epsilon = 1e-6) {
-    double a = 0.0;
-    double b = 1.0;
-    double m;
+    if (w1 * w2 < 0 && w3 * w4 < 0) return true;
 
-    while ((b - a) / 2 > epsilon) {
-        m = (a + b) / 2;
+    if (PktWodcinku(A, B, C)) return true;
+    if (PktWodcinku(A, B, D)) return true;
+    if (PktWodcinku(C, D, A)) return true;
+    if (PktWodcinku(C, D, B)) return true;
 
-        if (m * m - c == 0) {
-            return m;
-        } else if (m * m - c < 0) {
-            a = m;
-        } else {
-            b = m;
-        }
-    }
-
-    return (a + b) / 2;
-}
-
-int main() {
-    double c;
-    cout << "Podaj liczbe z przedzialu (0,1): ";
-    cin >> c;
-
-    double wynik = sqrt_bisekcja(c);
-    cout << "Pierwiastek z " << c << " ≈ " << wynik << endl;
-
-    return 0;
+    return false;
 }
