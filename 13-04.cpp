@@ -276,3 +276,67 @@ int main()
 
     return 0;
 }
+
+
+ciancao afvacnie 6
+    #include <iostream> 
+#include <cmath>
+#include <vector>
+#include <fstream>
+
+using namespace std;
+
+struct punkt
+{
+    float x, y;
+};
+
+void CzytajPkt(string info, punkt &P)
+{
+    cout<<info<<endl;
+    cout<<"x = "; cin>>P.x;
+    cout<<"y = "; cin>>P.y;
+}
+
+float det(float x1, float y1, float x2, float y2, float x3, float y3){
+    return (y3 - y1) * (x2 - x1) - (y2 - y1) * (x3 - x1);
+}
+
+void CzytajWiel(vector<punkt> &W){
+    int i, n;
+    ifstream we("wielwyp.txt");
+    we>>n; W.resize(n);
+    for(i=0;i<n;i++){
+        we>>W[i].x>>W[i].y;
+    }
+    we.close();
+}
+
+bool PktWWielWyp(vector<punkt> W, punkt P){
+    int n=W.size();
+    float w1,w2;
+    w1 = det(W[0].x,W[0].y,W[1].x,W[1].y,P.x,P.y);
+    for(int i=1;i<n;i++)
+    {
+        w2=det(W[i].x,W[i].y,W[(i+1)%n].x,W[(i+1)%n].y,P.x,P.y);
+        if(w1*w2<0) return false;
+    }
+    return true;
+}
+
+int main(){
+    punkt P;
+    vector<punkt> W;
+    CzytajPkt("Podaj wspolrzedne punktu P. ", P);
+
+    CzytajWiel(W);
+
+    if(PktWWielWyp(W,P)){
+        cout<<"tak ";
+    }
+    else{
+        cout<<"nie";
+    }
+  
+    return 0;
+}
