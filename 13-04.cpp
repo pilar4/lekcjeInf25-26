@@ -209,3 +209,70 @@ int main(){
 
    return 0;
 }
+
+cw 5
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+struct punkt
+{
+    float x, y;
+};
+
+float det(float x1, float y1, float x2, float y2, float x3, float y3){
+    return (y3 - y1) * (x2 - x1) - (y2 - y1) * (x3 - x1);
+}
+
+const float EPS = 0.000001;
+
+bool PktWOdcinku(punkt A, punkt B, punkt P){
+    float w = det(A.x, A.y, B.x, B.y, P.x, P.y);
+    if (abs(w) > EPS) return false;
+    return (P.x >= min(A.x, B.x) && P.x <= max(A.x, B.x) &&
+            P.y >= min(A.y, B.y) && P.y <= max(A.y, B.y));
+}
+
+void CzytajPkt(string info, punkt &P)
+{
+    cout << info << endl;
+    cout << "x = "; cin >> P.x;
+    cout << "y = "; cin >> P.y;
+}
+
+bool PktWTrojkacie(float xA,float yA, float xB, float yB, float xC, float yC,
+                    punkt P1)
+{
+    float w1 = det(xA,yA,xB,yB,P1.x,P1.y);
+    float w2 = det(xB,yB,xC,yC,P1.x,P1.y);
+    if(w1*w2<0)
+        return false;
+    w2 = det(xC,yC,xA,yA,P1.x,P1.y);
+    if(w1*w2<0)
+        return false;
+    return true;
+}
+
+int main()
+{
+    float xA,yA,xB,yB,xC,yC;
+    punkt P1;
+    // cout << "Podaj wartosc a, b i c ";
+    // cout << "Rownanie prostej " << endl;
+    // cout << "A = "; cin >> A;
+    // cout << "B = "; cin >> B;
+    // cout << "C = "; cin >> C;
+    cout<<"wpisz x i y A: "; cin>>xA>>yA;
+    cout<<"wpisz x i y B: "; cin>>xB>>yB;
+    cout<<"wpisz x i y C: "; cin>>xC>>yC;
+    CzytajPkt("Podaj wspolrzedne punktu p1. ", P1);
+
+    if(PktWTrojkacie(xA,yA,xB,yB,xC,yC,P1)){
+        cout<<"Jest w trojkacie";
+        return 0;
+    }
+    cout<<"Nie jest w trojkacie";
+
+    return 0;
+}
