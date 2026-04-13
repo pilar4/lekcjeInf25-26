@@ -100,6 +100,51 @@ int main()
     return 0;
 }
 
+cwianc 3
+#include <iostream> 
+#include <cmath>
+
+using namespace std;
+
+struct punkt
+{
+    float x, y;
+};
+
+void CzytajPkt(string info, punkt &P)
+{
+    cout<<info<<endl;
+    cout<<"x = "; cin>>P.x;
+    cout<<"y = "; cin>>P.y;
+}
+
+float det(float x1, float y1, float x2, float y2, float x3, float y3){
+    return (y3 - y1) * (x2 - x1) - (y2 - y1) * (x3 - x1);
+}
+
+bool PktPoTejSamStr(punkt A, punkt B, punkt P1, punkt P2){
+    float w1, w2;
+    w1=det(A.x,A.y,B.x,B.y,P1.x,P1.y);
+    w2=det(A.x,A.y,B.x,B.y,P2.x,P2.y);
+    return (w1*w2>0);
+}
+
+int main(){
+    punkt A, B, P1, P2;
+    CzytajPkt("Podaj wspolrzedne punktu A. ", A);
+    CzytajPkt("Podaj wspolrzedne punktu B. ", B);
+    CzytajPkt("Podaj wspolrzedne punktu P1. ", P1);
+    CzytajPkt("Podaj wspolrzedne punktu P2. ", P2);
+
+    if(PktPoTejSamStr(A,B,P1,P2)){
+        cout<<"Tak";
+    }
+    else{
+        cout<<"nie ";
+    }
+
+    return 0;
+}
 cw 4
 
 #include <iostream>
