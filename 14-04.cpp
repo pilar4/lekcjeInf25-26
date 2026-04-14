@@ -424,6 +424,7 @@ int main(){
     }
 
     //cpp 11, wlaczac z flaga "-std=c++11"
+    //algorytm z: https://cp-algorithms.com/geometry/convex-hull.html
 
     return 0;
 }
