@@ -33,6 +33,59 @@ int main(){
   
     return 0;
 }
+
+zandafeanie 2
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+const int n = 10;
+
+struct punkt
+{
+    float x, y;
+};
+
+void CzytajPkt(string info, punkt &P)
+{
+    cout << info << endl;
+    cout << "x = "; cin >> P.x;
+    cout << "y = "; cin >> P.y;
+}
+
+float det(float x1, float y1, float x2, float y2, float x3, float y3){
+    return (y3 - y1) * (x2 - x1) - (y2 - y1) * (x3 - x1);
+}
+
+int main(){
+    punkt A, B, P;
+    CzytajPkt("Podaj wspolrzedne punktu A (od 1 do 9): ", A);
+    CzytajPkt("Podaj wspolrzedne punktu B (od 1 do 9): ", B);
+
+    int stron1 = 0;
+    int stron2 = 0;
+    const float EPS = 0.000001;
+
+    for(int i = 0; i <= n; i++){
+        for(int j = 0; j <= n; j++){
+            P.x = i; 
+            P.y = j;
+            
+            float w = det(A.x, A.y, B.x, B.y, P.x, P.y);
+            
+            if (w > EPS) {
+                stron1++;
+            } else if (w < -EPS) {
+                stron2++;
+            }
+        }
+    }
+    cout<<stron1<<endl;
+    cout<<stron2<<endl;
+  
+    return 0;
+}
 zad 3
 #include <iostream>
 #include <cmath>
