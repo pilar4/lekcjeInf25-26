@@ -147,6 +147,99 @@ int main()
     return 0;
 }
 
+zad 4
+
+#include <iostream>
+#include <cmath>
+
+//program wlicza tez punkty pokrywajace sie z bokami trojkata
+
+using namespace std;
+
+struct punkt
+{
+    float x, y;
+};
+
+float det(float x1, float y1, float x2, float y2, float x3, float y3){
+    return (y3 - y1) * (x2 - x1) - (y2 - y1) * (x3 - x1);
+}
+
+bool PktWTrojkacie(float xA,float yA, float xB, float yB, float xC, float yC,
+                    int i, int j)
+{
+    float w1 = det(xA,yA,xB,yB,i,j);
+    float w2 = det(xB,yB,xC,yC,i,j);
+    if(w1*w2<0)
+        return false;
+    w2 = det(xC,yC,xA,yA,i,j);
+    if(w1*w2<0)
+        return false;
+    return true;
+}
+
+void opiszKwadrat(float xA,float yA, float xB, float yB, float xC, float yC, float &xmin, float &xmax, float &ymin, float &ymax){
+    if(xA>xB && xA>xC){
+        xmax = xA;
+        if(xB<xC) xmin = xB;
+        else xmin = xC;
+    }
+    else if(xB>xC){
+        xmax = xB;
+        if(xA<xC) xmin = xA;
+        else xmin = xC;
+    }
+    else{
+        xmax = xC;
+        if(xA<xB) xmin = xA;
+        else xmin = xB;
+    }
+
+    if(yA>yB && yA>yC){
+        ymax = yA;
+        if(yB<yC) ymin = yB;
+        else ymin = yC;
+    }
+    else if(yB>yC){
+        ymax = yB;
+        if(yA<yC) ymin = yA;
+        else ymin = yC;
+    }
+    else{
+        ymax = yC;
+        if(yA<yB) ymin = yA;
+        else ymin = yB;
+    }
+
+    return;
+}
+
+
+int main()
+{
+    float xA,yA,xB,yB,xC,yC;
+    float xmin, xmax, ymin, ymax;
+    int counter = 0;
+
+    cout<<"wpisz x i y A: "; cin>>xA>>yA;
+    cout<<"wpisz x i y B: "; cin>>xB>>yB;
+    cout<<"wpisz x i y C: "; cin>>xC>>yC;
+
+    opiszKwadrat(xA,yA,xB,yB,xC,yC,xmin,xmax,ymin,ymax);
+
+    for(int i=xmin; i<xmax; i++){
+        cout<<"B";
+        for(int j=ymin; j<ymax;j++){
+            cout<<"I";
+            if(PktWTrojkacie(xA,yA,xB,yB,xC,yC,i,j)) counter++;
+            cout<<counter;
+        }
+    }
+
+    return 0;
+}
+
+
 zad 5
 #include <iostream> 
 #include <cmath>
