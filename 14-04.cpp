@@ -190,3 +190,68 @@ int main(){
 
     return 0;
 }
+zad 6
+#include <iostream> 
+#include <cmath>
+#include <vector>
+#include <fstream>
+
+using namespace std;
+
+struct punkt
+{
+    float x, y;
+};
+
+
+void CzytajWiel(vector<punkt> &W){
+    int i, n;
+    ifstream we("wielokat_2.txt");
+    we>>n; W.resize(n);
+    for(i=0;i<n;i++){
+        we>>W[i].x>>W[i].y;
+    }
+    we.close();
+}
+
+
+bool CzyPunktWWielo(const vector<punkt>& polygon,
+                      const punkt& p)
+{
+    // algorytm robi ray casting czyli rysuje od punktu
+    // p prosta w prawo i sprawdza czy przecina jakas krawedz
+
+    int n = polygon.size();
+    int count = 0;
+
+    for (int i = 0; i < n; i++) {
+        punkt p1 = polygon[i];
+        punkt p2 = polygon[(i + 1) % n];
+
+        if ((p.y > min(p1.y, p2.y))
+            && (p.y <= max(p1.y, p2.y))
+            && (p.x <= max(p1.x, p2.x))) {
+            double xIntersect = (p.y - p1.y)
+                                    * (p2.x - p1.x)
+                                    / (p2.y - p1.y)
+                                + p1.x;
+            if (p1.x == p2.x || p.x <= xIntersect) {
+                count++;
+            }
+        }
+    }
+    return count % 2 == 1;
+}
+
+int main(){
+    vector<punkt> W;
+    punkt p;
+    cout<<"Podaj wspolrzedne punktu ";
+    cin>>p.x>>p.y;
+    CzytajWiel(W);
+    if(CzyPunktWWielo(W, p))
+        cout<<"Punkt lezy w wielokacie "<<endl;
+    else
+        cout<<"Punkt nie lezy w wielokacie "<<endl;
+    return 0;
+}
