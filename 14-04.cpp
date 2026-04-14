@@ -33,7 +33,7 @@ int main(){
   
     return 0;
 }
-zad 2
+zad 3
 #include <iostream>
 #include <cmath>
 
