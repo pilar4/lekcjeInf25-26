@@ -93,3 +93,47 @@ int main()
 
     return 0;
 }
+
+zad 5
+#include <iostream> 
+#include <cmath>
+#include <vector>
+#include <fstream>
+
+using namespace std;
+
+struct punkt
+{
+    float x, y;
+};
+
+
+void CzytajWiel(vector<punkt> &W){
+    int i, n;
+    ifstream we("wielokat_1.txt");
+    we>>n; W.resize(n);
+    for(i=0;i<n;i++){
+        we>>W[i].x>>W[i].y;
+    }
+    we.close();
+}
+
+float PoleWiel(vector<punkt> &W){
+    float pole=0.0;
+    int j;
+    int n=W.size();
+    for(int i=0;i<n;i++){
+        j = (i+1)%n;
+        pole += W[i].x * W[j].y;
+        pole -= W[j].x * W[i].y;
+    }
+    return abs(pole/2);
+}
+
+int main(){
+    vector<punkt> W;
+    CzytajWiel(W);
+    cout<<"Pole = "<<PoleWiel(W)<<endl;
+
+    return 0;
+}
