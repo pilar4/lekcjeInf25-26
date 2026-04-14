@@ -228,11 +228,8 @@ int main()
     opiszKwadrat(xA,yA,xB,yB,xC,yC,xmin,xmax,ymin,ymax);
 
     for(int i=xmin; i<xmax; i++){
-        cout<<"B";
         for(int j=ymin; j<ymax;j++){
-            cout<<"I";
             if(PktWTrojkacie(xA,yA,xB,yB,xC,yC,i,j)) counter++;
-            cout<<counter;
         }
     }
 
