@@ -150,3 +150,7 @@ function draw() {
   background(220);
   Sierpinski(3,0,0,400);
 }
+
+cw 7
+
+https://docs.google.com/spreadsheets/d/1Fvdm_ej0qipjSkt2Sw7IBJWjWTvvwTfOgrgpq8FDbIU/edit?usp=share_link
