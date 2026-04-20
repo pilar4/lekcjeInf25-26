@@ -48,3 +48,32 @@ function draw() {
     Koch(4,50,300,500,0);
     noLoop();
 }
+
+cw5
+function setup() {
+  createCanvas(600, 600);
+}
+
+function Cantor(n, x, y, d) {
+  if (n == 0) {
+    line(x, y, x + d, y);
+  } else {
+    Cantor(n - 1, x, y, d / 3);
+    Cantor(n - 1, x + 2 * d / 3, y, d / 3);
+  }
+}
+
+function DrzewoBinarne(n, x, y, d, alfa) {
+  let x1 = x + d * cos(alfa);
+  let y1 = y - d * sin(alfa);
+  line(x, y, x1, y1);
+  if (n > 0) {
+    DrzewoBinarne(n - 1, x1, y1, d / 2, alfa + PI / 4);
+    DrzewoBinarne(n - 1, x1, y1, d / 2, alfa - PI / 4);
+  }
+}
+
+function draw() {
+  background(220);
+  DrzewoBinarne(6, 300, 500, 100, PI / 2);
+}
