@@ -38,3 +38,14 @@ int main(){
 
 cw 2 
   np. modulo, gdzie wszystkie liczby są zapisywane jako reszta z dzielenia przez pewną liczbę
+
+Ćw.3 
+a)
+(7+15)mod 5 = 2 
+(7-15)mod 5 = 2
+(7*15)mod 5 = 0
+b) 
+(5+11) mod 13 = 3
+(5-11) mod 13 = 7
+(5*11) mod 13 = 3
+
