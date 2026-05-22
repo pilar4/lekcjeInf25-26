@@ -40,6 +40,13 @@ int main(){
     cout<<"Klucz prywatny: "<<s<<" "<<y<<endl;
     return 0;
 }
+
+cw 3
+
+C = 90^5  mod 299
+C = 5904900000 mod 299 = 26
+
+    
 cw 4(chb)
 
 #include <iostream>
