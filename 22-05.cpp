@@ -102,3 +102,48 @@ cw5
 129^53mod299=90
 
     m = 129^53 mod 299 = 90
+
+cw 6
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+int RSA(int podst, int wykl, int n)
+{
+    int w = 1;
+
+    while (wykl > 0)
+    {
+        if (wykl % 2 == 1)
+            w = (w * podst) % n;
+
+        wykl = wykl / 2;
+
+        if (wykl > 0)
+            podst = (podst * podst) % n;
+    }
+
+    return w;
+}
+
+int main()
+{
+    ifstream we("szyfrogram_RSA.txt");
+    ofstream wy("tekst_odszyfrowany.txt");
+    int d,n,x;
+
+    cout << "Podaj klucz prywatny:" << endl;
+    cout << "d = ";
+    cin >> d;
+    cout << "n = ";
+    cin >> n;
+
+    while (we >> x) wy<<char(RSA(x,d,n));
+    we.close();
+    wy.close();
+
+    cout << "Tekst zostal odszyfrowany";
+
+    return 0;
+}
