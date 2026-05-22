@@ -1,5 +1,10 @@
 ktore robice ???
 nwm na pewno 1 i 2
+
+cw 1
+    a) pub (7,299) pryw (42,299)
+    b) pub (5,323) pryw (173,323)
+
 cw 2
 #include <iostream>
 using namespace std;
